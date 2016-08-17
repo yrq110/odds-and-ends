@@ -82,8 +82,7 @@ Material Desgin Guideline中准备了调色板，不使用那些颜色就不能�
 
 在重新设计现有元素时，最好将colorPrimary作为logo的主色调。
 
-＜参考：Material Desgin调色板＞
-[http://www.google.com/design/spec/style/color.html#color-color-palette](http://www.google.com/design/spec/style/color.html#color-color-palette)
+＜参考：[Material Desgin调色板](http://www.google.com/design/spec/style/color.html#color-color-palette)＞
 
 ## 网格系统
 Material Desgin设计使用8dp的网格系统。
@@ -96,8 +95,7 @@ Material Desgin设计使用8dp的网格系统。
 
 上面的指南中提供了针对每一种UI组件的设计模板。
 
-＜参考：Material Desgin模板＞
-![http://www.google.com/design/spec/resources/layout-templates.html](http://www.google.com/design/spec/resources/layout-templates.html)
+＜参考：[Material Desgin模板](http://www.google.com/design/spec/resources/layout-templates.html)＞
 
 ## 动画
 
