@@ -7,17 +7,17 @@
 
 ***
 
-[Google Material Desgin指南](http://www.google.com/design/spec/material-design/introduction.html)。
+[Google Material Design指南](http://www.google.com/design/spec/material-design/introduction.html)。
 
-距离2014年6月发布以来已经过了1年(ps:文章是2015年写的)，出现了不少符合Material Desgin风格的优秀UI/UX作品,Android自不必说，iOS的应用也不少。
+距离2014年6月发布以来已经过了1年(ps:文章是2015年写的)，出现了不少符合Material Design风格的优秀UI/UX作品,Android自不必说，iOS的应用也不少。
 
-为了让至今依旧流行的Material Desgin指南更通俗易懂，抓住要点讲解一下。
+为了让至今依旧流行的Material Design指南更通俗易懂，抓住要点讲解一下。
 
 **目录**
-* [何谓Material Desgin](#what-is)
+* [何谓Material Design](#what-is)
   * [看似平面实则3D](#3d)
   * [纸与墨水](#paper)
-* [Material Desgin的色彩](#color)
+* [Material Design的色彩](#color)
 * [网格系统](#网格系统)
 * [动画](#动画)
   * [舒服的变换](#舒服的变换)
@@ -27,15 +27,15 @@
 
 
 <a name="what-is">
-## 何谓Material Desgin？
+## 何谓Material Design？
 
-Material Desgin直译过来就是[质感设计]。
+Material Design直译过来就是[质感设计]。
 
 数字设计中的[质感]体现在哪儿呢？来看两个概念。
 
 <a name="3d"></a>
 ### 看似平面实则3D
-Material Desgin通过物理手段来检测元素的重叠，在平面中具有明确的Z轴概念。
+Material Design通过物理手段来检测元素的重叠，在平面中具有明确的Z轴概念。
 
 ![](https://lab.sonicmoov.com/files/2015/07/materialdesign_3.png)
 
@@ -47,13 +47,13 @@ Material Desgin通过物理手段来检测元素的重叠，在平面中具有�
 
 <a name="paper"></a>
 ### 纸与墨水
-Material Desgin将导航栏、卡片列表、按钮等基本控件描述为[纸]，就是类似[纸]的东西。
+Material Design将导航栏、卡片列表、按钮等基本控件描述为[纸]，就是类似[纸]的东西。
 
 ![](https://lab.sonicmoov.com/files/2015/07/materialdesign_1.png)
 
 这个[纸]会像现实中的纸一样重叠，由于是虚拟的可以随意的变大变小。
 
-不过，像下图这样穿过一张纸等违反Material Desgina概念的行为是无效的。
+不过，像下图这样穿过一张纸等违反Material Design概念的行为是无效的。
 
 ![](https://lab.sonicmoov.com/files/2015/07/materialdesign_2.png)
 
@@ -61,13 +61,13 @@ Material Desgin将导航栏、卡片列表、按钮等基本控件描述为[纸]
 
 文字和图片能理解成墨水，不过动画…？
 
-虽说有违和感，不过Material Desgin是可以将动画当做墨水的。
+虽说有违和感，不过Material Design是可以将动画当做墨水的。
 
 由于这个[墨水]也是虚拟的，色彩与大小可以进行自由变换。
 
 <a name="color"></a>
-## Material Desgin的色彩
-Material Desgin不能在同一个视图内使用过多的颜色。
+## Material Design的色彩
+Material Design不能在同一个视图内使用过多的颜色。
 
 视图中的基本元素由下面四种色彩构成。
 
@@ -78,14 +78,14 @@ Material Desgin不能在同一个视图内使用过多的颜色。
 * colorAccent (与colorPrimary相比较醒目的颜色，重点色)
 * windowBackground (白色或透明的黑色，与colorPrimary是同系色)
 
-Material Desgin Guideline中准备了调色板，不使用那些颜色就不能进行Material Desgin！才怪。
+Material Design Guideline中准备了调色板，不使用那些颜色就不能进行Material Design！才怪。
 
 在重新设计现有元素时，最好将colorPrimary作为logo的主色调。
 
-＜参考：[Material Desgin调色板](http://www.google.com/design/spec/style/color.html#color-color-palette)＞
+＜参考：[Material Design调色板](http://www.google.com/design/spec/style/color.html#color-color-palette)＞
 
 ## 网格系统
-Material Desgin设计使用8dp的网格系统。
+Material Design设计使用8dp的网格系统。
 
 ![](https://lab.sonicmoov.com/files/2015/07/materialdesign_6.png)
 
@@ -95,11 +95,11 @@ Material Desgin设计使用8dp的网格系统。
 
 上面的指南中提供了针对每一种UI组件的设计模板。
 
-＜参考：[Material Desgin模板](http://www.google.com/design/spec/resources/layout-templates.html)＞
+＜参考：[Material Design模板](http://www.google.com/design/spec/resources/layout-templates.html)＞
 
 ## 动画
 
-对用户体验有很大影响的动画在Material Desgin中也是非常重要的。
+对用户体验有很大影响的动画在Material Design中也是非常重要的。
 
 关于动画有以下3个要点。
 
@@ -120,8 +120,8 @@ Material Desgin设计使用8dp的网格系统。
 
 ## 总结
 
-Material Desgin对于设计师、工程师与用户来说都很容易理解，不过到了实际做应用或服务时，要完全按照指南中的规则做・・・并不是那么容易。
+Material Design对于设计师、工程师与用户来说都很容易理解，不过到了实际做应用或服务时，要完全按照指南中的规则做・・・并不是那么容易。
 
 最重要的是需要考虑现在所做的应用与服务本身的理念与是否能为用户带来新的价值。
 
-为了做出满足App理念与为用户带来价值的UI/UX设计，应该要充分掌握Material Desgin指南中的要素吧。
+为了做出满足App理念与为用户带来价值的UI/UX设计，应该要充分掌握Material Design指南中的要素吧。
