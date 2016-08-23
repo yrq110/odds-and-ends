@@ -10,7 +10,7 @@
 
 ![](http://cdn.liginc.co.jp/wp-content/uploads/2016/07/eyecatch_160706_01_m.png)
 
-web浏览器现在有各种二样、五花八门的功能，不乏一些比较有趣的，比如使用canvas元素的一些游戏与3DCG，使用WebRTC进行浏览器间的P2P通信等。
+web浏览器现在有各种各样、五花八门的功能，不乏一些比较有趣的，比如使用canvas元素的一些游戏与3DCG，使用WebRTC进行浏览器间的P2P通信等。
 
 在那其中，对音频的操作在最近引起了我的兴趣。那么今天就来说说在web浏览器上处理音频的「WebAudioAPI」。
 
