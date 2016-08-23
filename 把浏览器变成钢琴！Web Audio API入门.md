@@ -1,4 +1,5 @@
-把浏览器变成钢琴！Web Audio API入门
+#把浏览器变成钢琴！Web Audio API入门
+
 ***
 
 >* 原文链接 : [webブラウザがピアノになる！「Web Audio API」入門](http://liginc.co.jp/284679)
@@ -99,9 +100,11 @@ bufferSource.start(0);
 
 使用短音来模拟钢琴键盘的单次音效。
 
+| 条目 | 内容 |
+| ------------- |-------------| 
 | 作品名	| Berklee samples v.4 |
 | 音源ファイル |	[https://archive.org/details/Berklee44v4](https://archive.org/details/Berklee44v4) |
-| 原作者	| @metasj |
+| 原作者	| [@metasj](https://archive.org/details/@metasj) |
 
 ```javascript
 // 获取指定音源文件的二进制数据
@@ -134,50 +137,51 @@ xml.onload = function() {
 
 声音响啦！
 
-### 音の高さを変えてみる
+### 改变音调
 
-AudioNodeには、自身の状態を表す可変の属性を持つものがあります。
+AudioNode有可以改变自身状态的可变属性。
 
-今回使用しているAudioBufferSourceNodeも、自身の再生速度を表し、増減が可能な、playbackRate属性を持っています。再生速度を上下させることで周波数も増減するので、これを利用して音の高さを変えてみます。
+这次使用的AudioBufferSourceNode，有一个可以改变自身播放速度的playbackRate属性，加快或减慢播放速度时声音的频率会随着改变，利用这个来改变声音的音调。
 
-AudioBufferSourceNodeのplaybackRate属性は、この属性の持つvalue属性を通して変更できます。変更していない状態を1として比率を設定し、再生速度を増減します。
+通过AudioBufferSourceNode的playbackRate属性的value值来增减播放速度，不改变的情况下设定为1。
 
 ```javascript
 bufferSource.buffer = data;
-// 再生速度を2倍に設定すると、周波数も2倍になり、音は高くなる
+// 设定为2倍的播放速度，频率会变为之前的2倍，音调会升高
 bufferSource.playbackRate.value = 2;
 bufferSource.connect(ctx.destination);
 bufferSource.start(0);
 ```
 
-再生速度が速くなると周波数も同じ比率で大きくなるため、音が高くなります。
+由于加快播放速度时，频率会随其等比例增大，因此音调会升高。
 
 ```javascript
 bufferSource.buffer = data;
-// 再生速度を半分に設定すると、周波数も半分になり、音は低くなる
+// 设定为0.5倍的播放速度，频率会变为之前的一般，音调会降低
 bufferSource.playbackRate.value = 0.5;
 bufferSource.connect(ctx.destination);
 bufferSource.start(0);
 ```
 
-再生速度が遅くなると、周波数も同じ比率で小さくなるため、音は低くなります。
+由于减慢播放速度时，频率会随其等比例减小，因此音调会降低。
 
-これをレンジバーで変更できるようにしたものが、こちら。
+在下面这个例子中可以在一定范围内改变音调。
 
 [源代码](https://github.com/lig-dsktschy/waapi-piano/tree/gh-pages/playbackrate)
 
-[サンプル](http://lig-dsktschy.github.io/waapi-piano/playbackrate/)
+[demo](http://lig-dsktschy.github.io/waapi-piano/playbackrate/)
 
-音が変わりました！
+音调变化了！
 
-### ピアノっぽくしてみる
+### 弹奏钢琴
 
-では、いよいよピアノっぽくしていきましょう。
+那么是时候来弹奏钢琴了。
 
-今回は、音の高さの変更に再生速度の変更を利用しますが、この方法では音質も変化してしまいます。この音源の場合、高くしたときの音質変化が特に耳につくため、低くするのみで音の高さを変更していきます。
+利用播放速度的改变来调整音调，使用这个方法时也会改变音质，由于频率较高时音质变得特别刺耳，因此我们需要降低一下音调。
 
-まずHTMLとCSSで鍵盤を作ります。今回使用している音源は、C（ド）の音です。
-音の高さは低くするのみと決めたので、このC（ド）が一番高い音、つまり右端の鍵盤がC（ド）となるように、白鍵と黒鍵をならべます。
+首先使用HTML与CSS来制作键盘，这次使用的音源是C（do）音。
+
+决定了降低音调后，将这个C音作为最高的音，也就是键盘最右端的C，其余按顺序摆放白键与黑键。
 
 HTML:
 ```html
@@ -244,32 +248,32 @@ li {
 ```javascript
 var isSP = typeof window.ontouchstart !== 'undefined';
  
-// 鍵盤要素の集合を配列化する
+// 将所有键整合成数组
 var keyboards = Array.prototype.slice.call(
     document.getElementsByClassName('keyboard')
 );
-// 右端から逆順に、鍵盤ごとの処理をしていく
+// 从右向左来依次处理键盘上的键
 keyboards.reverse().map(function(keyboard, index) {
      
-    // 鍵盤ごとの処理
+    // 处理键
  
 });
 ```
 
-右端の鍵盤C（ド）を計算の基準とするため、右から左へ向かって逆順に、鍵盤ごとの処理をしていきます。
+以最右端的C为基准，从右往左来处理每个键的音调。
 
-ピアノ（平均律）においては、ある音とその右隣の音との周波数比は、1：約1.059463となります。つまり、ある音とその左隣の音との周波数比は、約1.059463分の1：1となります。
+钢琴是以平均律为基础的，每个音与右邻音的频率比例大约为1：1.059463，与左邻音的频率比例大约为1.059463：1。
 
-これを利用して、鍵盤ごとに、右端の鍵盤C（ド）との周波数比を計算します。
+利用这个来计算每个音调与与最右端C音的音调频率比。
 
 ```javascript
-// 平均律における、ある音の隣の音に対する周波数比(近似値)
+// 根据平均律得出的相邻音调之间的频率比(近似値)
 var frequencyRatioTempered = 1.059463;
  
 // 〜 省略 〜
  
 keyboards.reverse().map(function(keyboard, index) {
-    // 基準のC（ド）から何音はなれているかで、周波数比を求める
+    // 根据基准音C求得其他音调相对于它的频率比例
     var frequencyRatio = 1;
     for (var i = 0; i < index; i++) {
         frequencyRatio /= frequencyRatioTempered;
@@ -277,7 +281,7 @@ keyboards.reverse().map(function(keyboard, index) {
 }
 ```
 
-前項で説明した通り、周波数と再生速度は同じ比率で増減するため、上で算出した周波数比を、そのまま再生速度比として設定します。
+前面已经说过，频率与播放速度时同比增减的，因此直接将上面算出的频率比设定为播放速度。
 
 ```javascript
 bufferSource.buffer = data;
@@ -286,12 +290,26 @@ bufferSource.connect(ctx.destination);
 bufferSource.start(0);
 ```
 
-これらをまとめたものが下記になります。
+接下来是总结。
+
 [源代码](https://github.com/lig-dsktschy/waapi-piano/tree/gh-pages/piano)
 
 [demo](http://lig-dsktschy.github.io/waapi-piano/piano/)
 
 ![](http://cdn.liginc.co.jp/wp-content/uploads/2016/06/piano.gif)
 
-ピアノっぽいですね！ 完成です！！
+钢琴可以弹了唉╮(╯▽╰)╭！ 完成搞定！
 
+
+## 与audio元素的不同
+
+使用HTML5中新增的audio元素来播放音源也可以实现，不过有一些不同:
+
+* 根据浏览器的不同对同时发声的个数有限制
+* 不能进行音源播放之前的中间处理
+
+## 总结
+
+这次使用Web Audio API作出了一个可以弹奏钢琴的应用。在浏览器上就可以演奏是不是挺棒？用手机访问的话，可以进行2指与3指的和弦演奏，请务必尝试一下(PS:我用iOS的Chrome试了下不行...)。
+
+那么回见！
