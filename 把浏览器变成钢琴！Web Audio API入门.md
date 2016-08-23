@@ -281,7 +281,7 @@ keyboards.reverse().map(function(keyboard, index) {
 }
 ```
 
-前面已经说过，频率与播放速度时同比增减的，因此直接将上面算出的频率比设定为播放速度。
+前面已经说过，频率与播放速度是同比增减的，因此直接将上面算出的频率比设定为播放速度。
 
 ```javascript
 bufferSource.buffer = data;
@@ -298,8 +298,9 @@ bufferSource.start(0);
 
 ![](http://cdn.liginc.co.jp/wp-content/uploads/2016/06/piano.gif)
 
-钢琴可以弹了唉╮(╯▽╰)╭！ 完成搞定！
+钢琴可以弹了唉╮(╯▽╰)╭！ 
 
+搞定！
 
 ## 与audio元素的不同
 
