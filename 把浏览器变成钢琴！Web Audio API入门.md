@@ -54,7 +54,7 @@ web浏览器现在有各种各样、五花八门的功能，不乏一些比较�
 开始使用Web Audio API之前，有两个需要注意的地方。
 
 1. WebAudioAPI处于W3C发布标准的“工作草案（Working Draft）”阶段（2016年6月）
-  距离到最终阶段为止很有可能有巨大的内容变化，“勧告”段階にない規格は、このことを認識した上で利用する必要があります。
+  距离到最终阶段为止很有可能有巨大的内容变化。
 
   参考:[https://www.w3.org/TR/#tr_Audio](https://www.w3.org/TR/#tr_Audio)
 2. 不支持 Internet Explorer 11
@@ -103,7 +103,7 @@ bufferSource.start(0);
 | 条目 | 内容 |
 | ------------- |-------------| 
 | 作品名	| Berklee samples v.4 |
-| 音源ファイル |	[https://archive.org/details/Berklee44v4](https://archive.org/details/Berklee44v4) |
+| 音源文件 |	[https://archive.org/details/Berklee44v4](https://archive.org/details/Berklee44v4) |
 | 原作者	| [@metasj](https://archive.org/details/@metasj) |
 
 ```javascript
@@ -264,7 +264,7 @@ keyboards.reverse().map(function(keyboard, index) {
 
 钢琴是以平均律为基础的，每个音与右邻音的频率比例大约为1：1.059463，与左邻音的频率比例大约为1.059463：1。
 
-利用这个来计算每个音调与与最右端C音的音调频率比。
+利用这个来计算每个音调与最右端C音的音调频率比。
 
 ```javascript
 // 根据平均律得出的相邻音调之间的频率比(近似値)
@@ -310,6 +310,6 @@ bufferSource.start(0);
 
 ## 总结
 
-这次使用Web Audio API作出了一个可以弹奏钢琴的应用。在浏览器上就可以演奏是不是挺棒？用手机访问的话，可以进行2指与3指的和弦演奏，请务必尝试一下(PS:我用iOS的Chrome试了下不行...)。
+这次使用Web Audio API做出了一个可以弹奏钢琴的应用。在浏览器上就可以演奏是不是挺棒？用手机访问的话，可以进行2指与3指的和弦演奏，请务必尝试一下(PS:我用iOS的Chrome试了下不行...)。
 
 那么回见！
