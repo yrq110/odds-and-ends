@@ -44,7 +44,7 @@
 
 ### AudioBufferSourceNode
 
-* 适合音源
+* 适合的音源
   短音源
 
   （例：钢琴与打击乐器等单次音源）
@@ -61,7 +61,7 @@
 
 ### MediaElementAudioSourceNode
 
-* 适合音源
+* 适合的音源
   长音源
   
   （例：乐曲的音源、持续数十秒的音源）
@@ -133,3 +133,50 @@ elButton.addEventListener('click', function() {
     isPlaying = !isPlaying;
 });
 ```
+
+把上面的代码整合一下，加个下雨的背景图片。如下
+
+[源码（GitHub）](https://github.com/lig-dsktschy/waapi-rain/tree/gh-pages/gain)
+
+[demo](https://lig-dsktschy.github.io/waapi-rain/gain/)
+
+雨下起来了唉O(∩_∩)O~~！不过这并没有进行中间处理，仅仅是使用audio元素进行播了放而已。
+
+那么是时候来让音量和音质变化了。
+
+## 变化音量
+
+表示中间处理的AudioNode有很多，其中的属性是表示自身处理状态的，继承自AudioParam的对象。
+
+AudioParam对象，有表示处理状态的balue属性，表示value初始值的defaultValue属性，还有其他各种方法。这些属性与方法对于继承自AudioParam的所有对象来说都可以进行操作。
+
+不过需要注意的是继承自AudioParam的对象名称与AudioNode是不同的。
+
+表示调整音量的AudioNode是**GainNode**。GainNode中的gain属性是继承自AudioParam的对象。
+
+gain对象的defaultValue值为1，value属性的设定为在0与1间的浮点数，0表示静音，1表示原始音量，可以重载音量大小。
+
+```javascript
+// 从AudioContext生成GainNode
+// GainNode: 中间处理（调整音量）AudioNode
+gain = ctx.createGain();
+// 设定GainNode，对其连接的音源进行音量减半的处理
+gain.gain.value = 0.5;
+```
+
+将GainNode与表示音源与最终输出的AudioNode相连接，就做好了以所设定的音量来播放音源的准备了。
+
+```javascript
+// 表示音源的AudioNode与表示中间处理(调整音量)的AudioNode连接
+mediaElementSource.connect(gain);
+// 表示中间处理的AudioNode与表示最终输出的AudioNode连接
+gain.connect(ctx.destination);
+```
+
+可以在滑杆(范围选择控件)上进行音量调节。如下
+
+[源码（GitHub）](https://github.com/lig-dsktschy/waapi-rain/tree/gh-pages/gain)
+
+[demo](https://lig-dsktschy.github.io/waapi-rain/gain/)
+
+可以调节成一场安静的雨！
