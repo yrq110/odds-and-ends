@@ -18,12 +18,29 @@
 
 中间处理可以说是WebAudioAPI的功能中与HTML的Audio元素相比区别最大的部分了。
 
+
+**目录**
+
+* [持续播放雨声的网站](#1)
+  * [Rainy Mood](#1-1)
+* [使用「Web Audio API」制作播放雨声的网站](#2)
+  * [AudioBufferSourceNode与MediaElementAudioSourceNode](#2-1)
+    * [AudioBufferSourceNode](#2-1-1)
+    * [MediaElementAudioSourceNode](#2-1-2)
+  * [发出声音](#2-2)
+* [变化音量](#3)
+* [多次中间处理](#4)
+* [总结](#5)
+
+
+<a name="1"></a>
 # 持续播放雨声的网站
 
 有一些公开的Web站点，持续播放作为放松与集中精神的BGM的连绵的下雨声。
 
 比如说下面这个。
 
+<a name="1-1"></a>
 ## Rainy Mood
 
 ![](http://cdn.liginc.co.jp/wp-content/uploads/2016/07/rainymood.png)
@@ -34,42 +51,41 @@
 
 这次使用WebAudioAPI的中间处理，在像这样的雨声播放功能的基础上增加了音质变化。
 
+<a name="2"></a>
 # 使用「Web Audio API」制作播放雨声的网站
 
+<a name="2-1"></a>
 ## AudioBufferSourceNode与MediaElementAudioSourceNode
 
 在利用音频文件作为音源的AudioNode中，除了上次使用的AudioBufferSourceNode以外，还会使用MediaElementAudioSourceNode。
 
 根据不同的适用音源与使用场景选择不同的AudioNode是很必要的。
 
+<a name="2-1-1"></a>
 ### AudioBufferSourceNode
 
-* 适合的音源
-  短音源
+* 适合的音源:短音源
 
   （例：钢琴与打击乐器等单次音源）
 
   获得音频数据时，需要等待全部数据解码完成才能使用，与长音源相反。
 
-* 适合的使用场景
-  需要控制发声时刻的场合
+* 适合的使用场景:需要控制发声时刻的场合
 
   （例：游戏的効果音）
 
-* 其它特点
-  由于对象是一次性的，播放后需要重新生成。
+* 其它特点:由于对象是一次性的，播放后需要重新生成。
 
+<a name="2-1-2"></a>
 ### MediaElementAudioSourceNode
 
-* 适合的音源
-  长音源
+* 适合的音源:长音源
   
   （例：乐曲的音源、持续数十秒的音源）
   
   无需等待获取全部数据就可以开始播放。
 
-* 适合的使用场景
-  不注重准确的发生时刻，循环中不断播放的场合。
+* 适合的使用场景:不注重准确的发生时刻，循环中不断播放的场合。
 
   （例：BGM）
 
@@ -77,8 +93,7 @@
 
   一些手机的浏览器也许可以控制audio元素，但并没有WebAudioAPI的相关功能。
 
-* 其它特点
-  生成对象后可以反复使用。
+* 其它特点:生成对象后可以反复使用。
  
 
 这一次使用持续较长时间的雨声作为音源。
@@ -91,8 +106,9 @@
 
 不过，对于那些不支持MediaElementAudioSourceNode的手机浏览器来说，就很遗憾了。
 
-## 首先发出声音
 
+<a name="2-2"></a>
+## 首先发出声音
 
 MediaElementAudioSourceNode，顾名思义，需要将HTML的audio与video元素作为音源来使用。在作为MediaElementAudioSourceNode音源的使用时，也可以使用audio与video元素原本的功能。
 
@@ -144,7 +160,8 @@ elButton.addEventListener('click', function() {
 
 那么是时候来让音量和音质变化了。
 
-## 变化音量
+<a name="3"></a>
+# 变化音量
 
 表示中间处理的AudioNode有很多，其中的属性是表示自身处理状态的，继承自AudioParam的对象。
 
@@ -181,8 +198,8 @@ gain.connect(ctx.destination);
 
 可以调节成一场安静的雨！
 
-
-# 複数の中間処理を挟んでみる
+<a name="4"></a>
+# 多次中间处理
 
 中间处理时可以进行多次连接。加上音量的调节后，也可以调整音质，使用低通滤波器与高通滤波器进行处理。
 
@@ -201,7 +218,7 @@ type属性的值为字符串，’lowpass’对应低通滤波器，、’highpa
 
 也可以设定为其他字符串，这个只使用效果比较容易理解的这两个。
 
-```
+```javascript
 // 设定BiquadFilterNode进行低通滤波器的处理
 biquadFilter.type = 'lowpass';
 ```
@@ -210,7 +227,7 @@ BiquadFilterNode有多个继承自AudioParam的对象，其中的frequency属性
 
 frequency对象的defaultValue属性为350，value属性最小值为10，最大值为音源采样频率的一半(PS:应该是根据奈奎斯特抽样定律)。
 
-```
+```javascript
 // BiquadFilterNode会发挥低通滤波器的功能，除去1000Hz频率以上的波
 biquadFilter.frequency.value = 1000;
 ```
@@ -223,7 +240,7 @@ value属性的范围与前文所述，不能将这个范围以外的数字信号
 
 将这BiquadFilterNode与表示音源的AudioNode与表示最终输出的AudioNode相连接。这样一来，给播放的音源添加滤波器的处理就准备完成了。
 
-```
+```javascript
 // 表示音源的AudioNode与表示音量调节处理的AudioNode连接
 mediaElementSource.connect(gain);
 // 表示音量调节处理的AudioNode与表示滤波处理的AudioNode连接
@@ -253,8 +270,8 @@ biquadFilter.connect(ctx.destination);
 
 因此使用它们可以调整AudioNode之间的连接。
 
-```c#
-// 同时中断GainNode与BiquadFilterNode的连接
+```javascript
+// 一次性中断GainNode与BiquadFilterNode的连接
 gain.disconnect();
 biquadFilter.disconnect();
 // BiquadFilter关闭时
@@ -269,8 +286,9 @@ if (text === 'off') {
 }
 ```
 
-这样，不仅加上了音量调节，也可以进行雨声音质的调整，调出低沉与清脆的声音。搞定！！
+这样，不仅加上了音量调节，也可以进行雨声音质的调整，调出低沉或清脆的声音。搞定！！
 
+<a name="5"></a>
 # 总结
 
 这次对雨声进行了类似拾音器的中间处理，比较容易理解，也可以对其它元素进行调整，比如延迟与发声方向等。
