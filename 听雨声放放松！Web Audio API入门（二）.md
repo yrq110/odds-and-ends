@@ -110,9 +110,9 @@
 <a name="2-2"></a>
 ## 首先发出声音
 
-MediaElementAudioSourceNode，顾名思义，需要将HTML的audio与video元素作为音源来使用。在作为MediaElementAudioSourceNode音源的使用时，也可以使用audio与video元素原本的功能。
+MediaElementAudioSourceNode，顾名思义，需要将HTML的audio与video元素作为音源来使用。在作为MediaElementAudioSourceNoded的音源使用时，也可以使用audio与video元素原本的功能。
 
-也就是说，播放、停止与循环、自动播放等功能，与单独使用audio/video元素时同样的操作。使用WebAudioAPI的中间处理给audio/video元素的音频加特效——这么想的话比较容易理解。
+也就是说，可使用播放、停止与循环、自动播放等功能，与单独使用audio/video元素时同样的操作。使用WebAudioAPI的中间处理给audio/video元素的音频加特效——这么想的话比较容易理解。
 
 HTML
 ```html
