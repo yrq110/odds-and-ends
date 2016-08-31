@@ -56,7 +56,8 @@ IE对应10以上的版本。那么赶快来看看使用方法吧。
 
 在targets中设定执行动画的元素，可以通过以下方法指定。
 
-| 種類	| 例	|
+| 种类	| 例子	|
+| ----- | --- |
 | CSS Selector	|	'.ball', '#container'	|
 | DOM Element	|	document.querySelector('#container')	|
 | Node List	|	document.querySelectorAll('.ball')	|
