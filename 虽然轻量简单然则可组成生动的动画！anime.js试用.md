@@ -51,3 +51,18 @@ IE对应10以上的版本。那么赶快来看看使用方法吧。
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
 基本的使用方法: 首先指定target，然后指定想要变化的值与想要给予的动画属性，就可以了。关于这些属性，之后会逐一介绍。
+
+### targets
+
+在targets中设定执行动画的元素，可以通过以下方法指定。
+
+| 種類	| 例	|
+| CSS Selector	|	'.ball', '#container'	|
+| DOM Element	|	document.querySelector('#container')	|
+| Node List	|	document.querySelectorAll('.ball')	|
+| 配列	|	['.ball', '#container']	|
+
+也可以在targets中输入对象，比如像这样伴随渐变效果改变值的大小。
+
+<p data-height="265" data-theme-id="0" data-slug-hash="qNQAgB" data-default-tab="css,result" data-user="Im0-3" data-embed-version="2" class="codepen">See the Pen <a href="http://codepen.io/Im0-3/pen/qNQAgB/">anime.js test - object properties</a> by Yusuke Omi (<a href="http://codepen.io/Im0-3">@Im0-3</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
