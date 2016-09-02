@@ -1,7 +1,7 @@
-#虽然轻量简单然则可组成生动的动画！anime.js试用
+#虽然轻量简单但可组成生动的动画！anime.js试用
 ***
 
->* 原文链接 : [虽然轻量简单然则可组成生动的动画！anime.js试用](http://liginc.co.jp/302886)
+>* 原文链接 : [虽然轻量简单但可组成生动的动画！anime.js试用](http://liginc.co.jp/302886)
 * 原文作者 : [店長](http://liginc.co.jp/author/omi)
 * 译者 : [yrq110](https://github.com/yrq110)
 
@@ -43,7 +43,7 @@ Demo:
 
 IE对应10以上的版本。那么赶快来看看使用方法吧。
 
-## 尝试anima.js
+## 尝试anime.js
 
 首先动起来，只写一个小球向上移动的动画可以吧！
 
@@ -61,7 +61,7 @@ IE对应10以上的版本。那么赶快来看看使用方法吧。
 | CSS选择器	|	'.ball', '#container'	|
 | DOM元素	|	document.querySelector('#container')	|
 | Node列表	|	document.querySelectorAll('.ball')	|
-| 配列	|	['.ball', '#container']	|
+| 数组	|	['.ball', '#container']	|
 
 也可以在targets中输入对象，比如像这样伴随缓动的效果改变值的大小。
 
@@ -93,3 +93,64 @@ IE对应10以上的版本。那么赶快来看看使用方法吧。
 | direction	| 'normal'	| 设定动画的播放方向。可以'normal', 'reverse', 'alternate'中进行	|
 | easing	| 'easeOutElastic'	| 设定缓动效果，可以通过console.log(anime.easings)来查看可使用的种类	|
 | elasticity	| 400	| 调整动画的弹性大小	|
+
+## 改变每项参数来调整动画
+
+接着改变参数来调整动画。
+
+给每个属性都设定一下目标值，可以设置duration、delay、easing等值。例子如下。
+
+<p data-height="265" data-theme-id="0" data-slug-hash="QEJdrj" data-default-tab="css,result" data-user="Im0-3" data-embed-version="2" class="codepen">See the Pen <a href="http://codepen.io/Im0-3/pen/QEJdrj/">anime.js sample - Specific animation parameters</a> by Yusuke Omi (<a href="http://codepen.io/Im0-3">@Im0-3</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+分别设定translateY与rotateY，小球上升后紧接着会翻转。
+
+## 设定参数的起始值与终止值
+
+通过数组输入起始值与终止值，0位是起始值，1位是终止值。
+
+<p data-height="265" data-theme-id="0" data-slug-hash="KrAoAg" data-default-tab="css,result" data-user="Im0-3" data-embed-version="2" class="codepen">See the Pen <a href="http://codepen.io/Im0-3/pen/KrAoAg/">anime.js Sample - From To values</a> by Yusuke Omi (<a href="http://codepen.io/Im0-3">@Im0-3</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+## 操作特定的元素值
+
+有时在targets中会存在多个元素，可以使用函数来指定各元素的值。
+
+第一个参数是被处理的target，第二个参数为target的索引值。函数的返回值即为target对应的属性值。
+
+<p data-height="265" data-theme-id="0" data-slug-hash="jAQzjV" data-default-tab="css,result" data-user="Im0-3" data-embed-version="2" class="codepen">See the Pen <a href="http://codepen.io/Im0-3/pen/jAQzjV/">anime.js Sample 1 Specific target values</a> by Yusuke Omi (<a href="http://codepen.io/Im0-3">@Im0-3</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+## 控制动画的播放与暂停
+
+anime.js不仅可以进行动画的播放与暂停，也可以根据进度来表示动画。
+
+
+| 名称	| 默认值 |
+| ---- | ---------- |
+| .play()	| 播放动画 |
+| .pause()	| 暂停动画 |
+| .restart()	| 重新播放动画 |
+| .seek()	| 通过进度表示动画，在0~100之间取值 |
+
+<p data-height="265" data-theme-id="0" data-slug-hash="rLQvaG" data-default-tab="css,result" data-user="Im0-3" data-embed-version="2" class="codepen">See the Pen <a href="http://codepen.io/Im0-3/pen/rLQvaG/">anime.js Sample - Multiple timing values</a> by Yusuke Omi (<a href="http://codepen.io/Im0-3">@Im0-3</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+## 路径动画
+
+可以沿着SVG路径来执行动画。
+
+使用anime.path()函数来得到动画执行的路径，将参数设为想得到的路径对象。
+
+可以使用translateX、tranlateY、rotate 3种属性来改变通过anime.path()得到的路径对象。
+
+<p data-height="265" data-theme-id="0" data-slug-hash="xOQjOQ" data-default-tab="html,result" data-user="Im0-3" data-embed-version="2" class="codepen">See the Pen <a href="http://codepen.io/Im0-3/pen/xOQjOQ/">anime.js Sample - Path Animation</a> by Yusuke Omi (<a href="http://codepen.io/Im0-3">@Im0-3</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+## 总结
+
+感觉怎么样？操作简单，有丰富的淡入淡出等渐变效果，并且能调整附带的弹性效果，轻轻松松就能设计出生动的动画。
+
+虽然有时使用复杂的动画效果更好，不过从使用简单动画实现开始也未尝不可，请务必把玩一下下！
+
+PS: 顺便放上根据anime.js作者的例子自己弄的[demo](http://codepen.io/yrq110/pen/YGzZRE)
