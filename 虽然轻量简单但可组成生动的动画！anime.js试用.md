@@ -1,7 +1,7 @@
 #虽然轻量简单但可组成生动的动画！anime.js试用
 ***
 
->* 原文链接 : [虽然轻量简单但可组成生动的动画！anime.js试用](http://liginc.co.jp/302886)
+>* 原文链接 : [軽量・簡単なのにいきいきしたアニメーションが付けられる！anime.jsを触ってみた](http://liginc.co.jp/302886)
 * 原文作者 : [店長](http://liginc.co.jp/author/omi)
 * 译者 : [yrq110](https://github.com/yrq110)
 
