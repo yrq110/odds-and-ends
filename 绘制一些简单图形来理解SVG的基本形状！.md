@@ -37,11 +37,11 @@ SVG标签与普通的HTML标签一样由DOM对象管理，使用javascripta来�
 
 # 试着绘制SVG
 
-大多数情况下使用Illustrator导出SVG格式，你了解实际的DOM组成吗 SVG形式で書き出して使用するケースが多いですが、実際どういうDOM構造をしているのでしょうか。
+大多数情况下使用Illustrator导出SVG格式，你了解实际的DOM组成吗。
 
 来学习一下其中的构成，从绘制简单的图形绘制开始吧。
 
-## SVGタグに必要な属性を記述しよう
+## 常用SVG标签与属性
 
 首先需要SVG标签，如下所示：
 
@@ -49,60 +49,60 @@ SVG标签与普通的HTML标签一样由DOM对象管理，使用javascripta来�
 <svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
 ```
 
-xmlns属性的值为http://www.w3.org/2000/svg，表示svg的命名空间，吓着设置了所绘制区域的大小：width属性与height属性。 属性の値をhttp://www.w3.org/2000/svgとし、SVGであることを示します。次にwidth属性、height属性に、描画する領域の大きさを指定します。
+xmlns属性的值为http://www.w3.org/2000/svg，为svg的命名空间，接着使用width属性与height属性设置所绘制区域的大小。
 
-viewBoxは表示領域の中の座標軸の設定です。左上の座標を(0,0)とし、そこから横に600、縦に600いったところに右下の座標を置きます。基本的に右下の座標はwidthとheightの値を入れておけばOKです。
+viewBox设置所表示的区域，左上角的坐标为(0,0)，右下角的坐标为横向移动600，纵向移动600的位置，一般把width与height值代入右下坐标即可。
 
-## 線を描いてみよう
+## 画线
 
 <p data-height="265" data-theme-id="0" data-slug-hash="rLkYxm" data-default-tab="html,result" data-user="hatsushi_kazuya" data-embed-version="2" class="codepen">See the Pen <a href="http://codepen.io/hatsushi_kazuya/pen/rLkYxm/">SVG line</a> by k_hatsushi (<a href="http://codepen.io/hatsushi_kazuya">@hatsushi_kazuya</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
-線を描画するには、lineタグを使用します。x1,y1が起点の座標、x2,y2が終点の座標です。また、stroke-widthで線の太さ、strokeで線の色を指定できます。
+使用line标签来画线。x1,y1是起点坐标，x2,y2是终点坐标，另外，用stroke-width设置线条宽度，stroke设置线条填充颜色。
 
-## 丸を描いてみよう
+## 画圆
 
 <p data-height="265" data-theme-id="0" data-slug-hash="Krxyra" data-default-tab="html,result" data-user="hatsushi_kazuya" data-embed-version="2" class="codepen">See the Pen <a href="http://codepen.io/hatsushi_kazuya/pen/Krxyra/">SVG circle</a> by k_hatsushi (<a href="http://codepen.io/hatsushi_kazuya">@hatsushi_kazuya</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
-円を描画するにはcircleタグを使用します。
+使用circle标签来画线。
 
-cx,cyが円の中心点のx座標、y座標、rは円の半径です。fillにカラーコードやnoneを記述することで、円の中の塗りを指定することができます。
+cx,cy为圆心的x坐标与y坐标，r是圆的半径。赋予fill属性颜色码或none来设置内部填充的颜色。
 
-## 四角を描いてみよう
+## 画矩形
 
 <p data-height="265" data-theme-id="0" data-slug-hash="dXqkrw" data-default-tab="html,result" data-user="hatsushi_kazuya" data-embed-version="2" class="codepen">See the Pen <a href="http://codepen.io/hatsushi_kazuya/pen/dXqkrw/">SVG  square</a> by k_hatsushi (<a href="http://codepen.io/hatsushi_kazuya">@hatsushi_kazuya</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
-四角を描画するにはrectタグを使用します。
+使用rect标签绘制矩形。
 
-x、yには起点の座標、width、heightには起点からの距離を指定します。rx、ryは、角丸にしたい際に指定します。
+x、y为起点坐标，width与height为从起点开始的距离，可以使用rx、ry设置圆角。
 
-## 三角を描いてみよう
+## 画三角形
 
 <p data-height="265" data-theme-id="0" data-slug-hash="bZxYwE" data-default-tab="html,result" data-user="hatsushi_kazuya" data-embed-version="2" class="codepen">See the Pen <a href="http://codepen.io/hatsushi_kazuya/pen/bZxYwE/">SVG trigone</a> by k_hatsushi (<a href="http://codepen.io/hatsushi_kazuya">@hatsushi_kazuya</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
-折れ線を描くにはpolylineタグ、多角形を描くにはpolygonを使用します。
+使用polyline标签绘制折线，polygon标签绘制多边形。
 
-書き始めたい座標をカンマ区切りで順に記述していきます。
+按顺序编写坐标，使用逗号来分隔。
 
-上向き三角のコードで説明すると、
+上面的三角形是按下面这些坐标
 
-x座標200 y座標300
+x坐标200 y坐标300
 
-x座標350 y座標100
+x坐标350 y坐标100
 
-x座標500 y座標300
+x坐标500 y坐标300
 
-の位置に置いたパスを、順に結んでいます。
+的顺序连接的路径。
 
-polylineタグとpolygonタグの違いは、パスを閉じるかどうかの違いしかありません。よって、上向き三角と下向き三角の間の線は、polygonタグで描いた下向き三角のものです。
+polyline标签与polygon标签的区别是，在路径是否闭合这个问题上有所不同，因此，上三角与下三角中间的那条线是属于polygon标签所画的下三角。
 
-# まとめ
+# 总结
 
-今回は、図形を簡単に描ける方法をご紹介させていただきました。
+这一次介绍了简单图形的绘制方法。
 
-位置を座標指定するのと、それぞれの形に応じたタグを使用することを覚えれば基本的な図形は難しくありません。
+若记住这些位置坐标的设置方法与各种类型的图形标签的话，绘制基本图形就不是很难了。
 
-色を変えたり、形を組み合わせてたりして、動かしたりして、ぜひ表現の幅を広げてみてください！
+请务必尝试一下诸如改变颜色、组合图形、动画等其它丰富的表现！
