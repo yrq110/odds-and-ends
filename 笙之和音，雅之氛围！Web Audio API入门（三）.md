@@ -20,7 +20,7 @@
 
 下面来试着使用WebAudioAPI生成音源吧。
 
-> ・请确保在阅读本文时，浏览器的其他标签或窗口没有在使用WebAudioAPI。
+> 请确保在阅读本文时，浏览器的其他标签或窗口没有在使用WebAudioAPI。
 
 > Web浏览器对同时存在的AudioContext对象数量是有限制的。一般情况下一个应用不需要用到多个AudioContext对象，这个限制也就不会让人令人困惑了。不过有可能多个标签、窗口或iframe同时使用WebAudioAPI，这样就会发生错误，因此在阅读本篇文章时需要先终止其他地方的使用。
 
@@ -32,7 +32,7 @@
 
 [http://matt-diamond.com/drone.html](http://matt-diamond.com/drone.html)
 
-这个是以前介绍过的可以播放嗡嗡声的网站。こちらは、以前にも紹介したドローンを再生するWebサイトです。
+这个是以前介绍过的可以播放嗡嗡声的网站。
 
 このドローンは複数の音源を同時発音することで表現されていて、その音源はWebAudioAPIを用いてブラウザ上で生成されています。
 这次同样使用WebAudioAPI来生成音源，制作一个雅乐所使用的乐器——笙的声音。
@@ -54,8 +54,9 @@
 <p data-height="265" data-theme-id="0" data-slug-hash="qNZywG" data-default-tab="result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160801" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/qNZywG/">160801</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-わたしたちは空気の振動を音として感じ取っています。
-空気の振動は波形として表現することができ、代表的な波形としては正弦波、矩形波、三角波、のこぎり波の４つがよく挙げられます。
+当空气震动时会听到声音。
+
+空气的震动可以用波形来表示，常用的波形有正弦波、矩形波、三角波和锯齿波四种。
 
 ![](https://cdn.liginc.co.jp/wp-content/uploads/2016/08/147243386027684500_05.png)
 （Wikipediaより）
@@ -69,15 +70,45 @@ OscillatorNode可以产生4种波形，通过设置type属性来指定波形的�
 <p data-height="265" data-theme-id="0" data-slug-hash="vKoawO" data-default-tab="result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160802" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/vKoawO/">160802</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-音の高低は、波形の繰り返し回数によって変動します。
-速く多く繰り返されるほど高い音、遅く少なく繰り返されるほど低い音となります。
+声音的高低会根据波形的重复次数而变化。
 
-ある時間中の波形の繰り返し回数を周波数とよび、1秒間の回数はHz（ヘルツ）という単位で表されます。つまり、周波数が大きいほど高い音、小さいほど低い音ということになります。
+速度较快波形重复次数较多则为高音，速度较慢波形重复次数较少则为低音。
 
-OscillatorNodeは、frequencyという属性に、AudioParam（前回記事参照）を継承するオブジェクトを持ち、これによって周波数を表します。
-frequencyオブジェクトは、defaultValue属性が440(単位:Hz)に設定されていて、value属性に任意の不動小数点数(単位:Hz)を設定することで、周波数を上書きすることができます。
+一定时间内波形的重复次数被称为频率，频率的单位为Hz(赫兹)，表示每秒的重复次数。也就是说频率大则为高音，频率小则为低音。
 
+OscillatorNode的frequency属性是继承了AudioParam的对象，表示频率。
 
-```javascript
+frequency对象的defaultValue属性值为440(单位:Hz)，给value属性设置任意的浮点数可以覆盖默认的频率值。
 
-```
+<p data-height="265" data-theme-id="0" data-slug-hash="WxVKBE" data-default-tab="result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160803" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/WxVKBE/">160803</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+这次直接与最终输出连接播放声音波形。
+
+<p data-height="265" data-theme-id="0" data-slug-hash="jAgvOk" data-default-tab="result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160804" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/jAgvOk/">160804</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+可以在浏览器上生成音源了(点击demo页面播放音源)！
+
+播放后听到声音后，可以通过改变type属性，听听四种波形的音色有什么不同。我个人觉得锯齿波比较接近笙的音色。
+
+也就是说，要将type属性设置为sawtooth。
+
+### 重拾丢弃过的对象
+
+OscillatorNodeは、AudioBufferSourceNode(前回、前々回記事参照)と同じく、使い捨てのオブジェクトであるため、一度停止した後は再生することができません。
+
+今回のように時間経過による変化がない音源を使用する場合、GainNode(前回記事参照)によって音量を0に切り替えることで、停止を代用することができます。
+
+<p data-height="265" data-theme-id="0" data-slug-hash="xOvaxN" data-default-tab="result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160805" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/xOvaxN/">160805</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+ただ、この停止方法では、聞こえていないだけで、再生は音量を0にしても続いています。楽曲のように時間経過によって音源の状態が変化していく場合、この停止方法では停止直前と再生直後とで音源の状態が繋がらないため、注意が必要です。
+
+より演奏している感覚に近付けるため、クリック・タッチしている間だけ再生されるようにしてみましょう。
+
+<p data-height="265" data-theme-id="0" data-slug-hash="YWmOGq" data-default-tab="result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160806" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/YWmOGq/">160806</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+ちょっと楽器感が出てきたのではないでしょうか？
+次は和音を発生させてみます。
