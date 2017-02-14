@@ -32,17 +32,19 @@
 
 [http://matt-diamond.com/drone.html](http://matt-diamond.com/drone.html)
 
-这个是以前介绍过的可以播放嗡嗡声的网站。
+这是以前介绍过的可以播放嗡嗡声的网站。
 
-このドローンは複数の音源を同時発音することで表現されていて、その音源はWebAudioAPIを用いてブラウザ上で生成されています。
-这次同样使用WebAudioAPI来生成音源，制作一个雅乐所使用的乐器——笙的声音。
+这个嗡嗡的声音是用多个音源同时发声来实现的，它的音源是在浏览器上用WebAudioAPI生成的。
+
+这次同样使用WebAudioAPI来生成音源，制作一个雅乐中所使用的乐器——笙的声音。
 
 ## 使用「Web Audio API」在Web浏览器上产生笙的声音
 
 ### 笙是什么乐器？
 
-「雅楽」は、お正月などに耳にしたことがあるかと思います。
-その中でもひときわ神秘的な雰囲気を醸し出している、ミャーという音、あれが笙です。
+「雅乐」，是一般在新年或者祭祀时会听到的传统音乐。
+
+其中有一种可以营造出神秘氛围的乐器 —— 那就是笙。	
 
 合竹（あいたけ）と呼ばれる和音の演奏が中心で、吹いても吸っても音が出るため、音を長く持続できるそうです。
 形は翼を立てて休んでいる鳳凰（ほうおう）に見立てられ、音色は天から差し込む光を表すのだとか。素敵ですね。
@@ -94,21 +96,54 @@ frequency对象的defaultValue属性值为440(单位:Hz)，给value属性设置�
 
 也就是说，要将type属性设置为sawtooth。
 
-### 重拾丢弃过的对象
+### 继续使用一次性对象
 
-OscillatorNodeは、AudioBufferSourceNode(前回、前々回記事参照)と同じく、使い捨てのオブジェクトであるため、一度停止した後は再生することができません。
+由于OscillatorNode与AudioBufferSourceNode(参见之前的系列文章)一样都是一次性使用的对象，在停止后不能再次播放。
 
-今回のように時間経過による変化がない音源を使用する場合、GainNode(前回記事参照)によって音量を0に切り替えることで、停止を代用することができます。
+这次的情况是随着时间不会变化的音源，使用GainNode(参见之前的系列文章)将音量调到0当做停止。
 
 <p data-height="265" data-theme-id="0" data-slug-hash="xOvaxN" data-default-tab="result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160805" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/xOvaxN/">160805</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-ただ、この停止方法では、聞こえていないだけで、再生は音量を0にしても続いています。楽曲のように時間経過によって音源の状態が変化していく場合、この停止方法では停止直前と再生直後とで音源の状態が繋がらないため、注意が必要です。
+不过用这种停止方法的话，仅仅是听不到而已，音源还是在以音量为0的状态继续播放着。需要注意若乐曲是根据时间变化的话，使用这种停止的方法不会保持停止前的状态，与继续播放时的状态会有所不同。
 
-より演奏している感覚に近付けるため、クリック・タッチしている間だけ再生されるようにしてみましょう。
+为了有点演奏的感觉，使用点击操作来控制声音的播放。
 
 <p data-height="265" data-theme-id="0" data-slug-hash="YWmOGq" data-default-tab="result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160806" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/YWmOGq/">160806</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-ちょっと楽器感が出てきたのではないでしょうか？
-次は和音を発生させてみます。
+是不是有点乐器的感觉了？
+
+下面来产生和音。
+
+### 制作和音
+
+まず、笙が出す音の周波数を、配列として列挙しましょう。
+平均律(前々回記事参照)とは異なる調律がされているため、こちらのサイトを参考にさせていただきました。
+
+> [笙吹きロバの笙の調律コーナー](http://gagaku.okunohosomichi.net/choritsu1.htm)
+
+<p data-height="265" data-theme-id="0" data-slug-hash="yJmxXQ" data-default-tab="result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160807" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/yJmxXQ/">160807</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+次に、上で挙げた配列を用いて、笙の和音の構成もまた、配列として列挙します。
+[Wikipedia](https://ja.wikipedia.org/wiki/%E7%AC%99#.E5.90.88.E7.AB.B9)を参考に、6音で構成される和音のみピックアップしました。
+
+<p data-height="265" data-theme-id="0" data-slug-hash="JKgayo" data-default-tab="result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160808" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/JKgayo/">160808</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+OscillatorNodeは、1つにつき1つの波形しか発生させることができないため、和音は複数のOscillatorNodeを同時に再生させることで表現します。
+和音を構成する6音分のOscillatorNodeを、それぞれの周波数に設定し、最終出力まで接続しましょう。
+
+
+<p data-height="265" data-theme-id="0" data-slug-hash="oLKPEx" data-default-tab="result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160809" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/oLKPEx/">160809</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+和音を再生することができましたね！
+さらに、クリック・タッチのたび和音の種類がランダムに選択されるようにしておきます。
+
+<p data-height="265" data-theme-id="0" data-slug-hash="YWmOJk" data-default-tab="result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160810" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/YWmOJk/">160810</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+実際に演奏される際の音の入り、音の終わりは、上のサンプルのようにいきなり最大音量、いきなり無音というわけではなく、なめらかに音量が上下します。
+ということで、仕上げにフェードイン・フェードアウトをつけてみましょう。
