@@ -181,3 +181,20 @@ setValueAtTimeメソッドは、value属性の値を、指定した値へ、指�
 
 AudioParamオブジェクトのcancelScheduledValuesメソッドは、オートメーションメソッドによって未来に登録されている値の変動を、すべてキャンセルしてくれます。
 これをsetValueAtTimeの前に実行しておくことで、イベント発生中の別イベント発生に対処することができます。
+
+<p data-height="265" data-theme-id="0" data-slug-hash="vXOyZK" data-default-tab="result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160813" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/vXOyZK/">160813</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+また、このままでは、途中から発生したフェードイン・フェードアウトにも常に3秒の時間をかけてしまうため、最後にそこも対策しておきましょう。
+
+<p data-height="265" data-theme-id="0" data-slug-hash="ZpGvoa" data-default-tab="result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160814" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/ZpGvoa/">160814</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+このページではこれ以上AudioContextオブジェクトを作れない……！　というわけで、最後の実行結果はこちらでご確認ください。
+
+<p data-height="265" data-theme-id="0" data-slug-hash="akZRJp" data-default-tab="result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="1608-completed" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/akZRJp/">1608-completed</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+[运行结果](http://sho.netlify.com/)
+
+ついでに背景もクリック・タッチに連動させてあります。天から差し込む光を表……せているでしょうか？　完成です！
