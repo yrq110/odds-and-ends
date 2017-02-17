@@ -148,7 +148,7 @@ OscillatorNode不能发出一个接一个连续的波形，使用多个Oscillato
 <p data-height="265" data-theme-id="0" data-slug-hash="YWmOJk" data-default-tab="result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160810" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/YWmOJk/">160810</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-实际演奏时声音的开始与结束不会像上面的例子一样一会儿是最大音量一会儿又突然没有声音，应该是一种平滑的音量变化。
+实际演奏时声音的开始与结束不会像上面的例子一样，一会儿是最大音量一会儿又突然没有声音，应该是一种平滑的变化。
 
 也就是说，需要加入一种淡入(fade in)与淡出(fade out)的效果。
 
@@ -165,10 +165,11 @@ WebAudioAPI将当前时刻的值保存在了AudioContext的currentTime属性中�
 <p data-height="265" data-theme-id="0" data-slug-hash="qadaZw" data-default-tab="result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160811" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/qadaZw/">160811</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-linearRampToValueAtTimeを使用する場合、value属性の現在の値を現在時刻と結びつけておく必要があります。これをせずに実行すると、値が即時に変動してしまったりと、設定内容とは異なる挙動が発生してしまいます。
+使用linearRampToValueAtTime时需要将value属性的当前值与当前时间结合起来，若未进行这个操作，属性值会立刻变化，产生与所设定内容不同的效果。
 
-value属性の現在の値と現在時刻とを結び付けるには、同じくオートメーションメソッドのsetValueAtTimeメソッドを使いましょう。
-setValueAtTimeメソッドは、value属性の値を、指定した値へ、指定した時間に即時変更します。
+为了将value属性的当前值与当前时刻结合起来，需要使用同为自动方法的setValueAtTime方法。
+
+setValueAtTime方法会将value属性的值在指定的时刻改为指定的值。
 
 これを、目標値をvalue属性の現在の値、変更時刻を現在時刻として実行することで、結び付けは完了です。
 現在の値から現在の値への上書きなので、見かけ上は何も発生しません。
