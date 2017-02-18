@@ -46,8 +46,9 @@
 
 其中有一种可以营造出神秘氛围的乐器 —— 那就是笙。	
 
-合竹（あいたけ）と呼ばれる和音の演奏が中心で、吹いても吸っても音が出るため、音を長く持続できるそうです。
-形は翼を立てて休んでいる鳳凰（ほうおう）に見立てられ、音色は天から差し込む光を表すのだとか。素敵ですね。
+作为和音演奏中的主要乐器，吹与吸均能产生声音，可以发出持续时间较长的声音。
+
+乐器形状好像一只收翼休憩的凤凰，音色犹如透过天际的光芒，非常优美。
 
 ### 首先产生声音
 
@@ -118,7 +119,7 @@ frequency对象的defaultValue属性值为440(单位:Hz)，给value属性设置�
 
 ### 制作和音
 
-首先，整理出笙所发出声音频率的数组。
+首先整理出笙所发出声音频率。
 
 这种调音与十二平均律(参见上一篇文章)是不同的，可以参考下面这个站点。
 
@@ -127,14 +128,14 @@ frequency对象的defaultValue属性值为440(单位:Hz)，给value属性设置�
 <p data-height="265" data-theme-id="0" data-slug-hash="yJmxXQ" data-default-tab="result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160807" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/yJmxXQ/">160807</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-下面，使用数组的方法构建笙的和音频率数组。
+下面构建笙的和音频率数组。
 
 参考[Wikipedia](https://ja.wikipedia.org/wiki/%E7%AC%99#.E5.90.88.E7.AB.B9)，使用6个音就可构建和音的拾音器。
 
 <p data-height="265" data-theme-id="0" data-slug-hash="JKgayo" data-default-tab="result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160808" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/JKgayo/">160808</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-OscillatorNode不能发出一个接一个连续的波形，使用多个OscillatorNode同时播放来实现和音效果。
+由于每个OscillatorNode只能产生一种波形，使用多个OscillatorNode同时播放来实现和音效果。
 
 设定构成和音6音的OscillatorNode频率，连接到最终的输出上。
 
@@ -165,37 +166,53 @@ WebAudioAPI将当前时刻的值保存在了AudioContext的currentTime属性中�
 <p data-height="265" data-theme-id="0" data-slug-hash="qadaZw" data-default-tab="result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160811" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/qadaZw/">160811</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-使用linearRampToValueAtTime时需要将value属性的当前值与当前时间结合起来，若未进行这个操作，属性值会立刻变化，产生与所设定内容不同的效果。
+使用linearRampToValueAtTime时，需要将value属性的当前值与当前时间结合起来，若未进行这个操作，属性值会没有变化的起点，立刻发生变化，产生与所设定内容不同的效果。
 
 为了将value属性的当前值与当前时刻结合起来，需要使用同为自动方法的setValueAtTime方法。
 
 setValueAtTime方法会将value属性的值在指定的时刻改为指定的值。
 
-これを、目標値をvalue属性の現在の値、変更時刻を現在時刻として実行することで、結び付けは完了です。
-現在の値から現在の値への上書きなので、見かけ上は何も発生しません。
+将方法的目标值设为value的当前值，改变时刻设为当前时刻，这样就完成绑定了。
+
+由于使用当前值覆盖了当前值，因此看起来没有什么变化。
 
 <p data-height="265" data-theme-id="0" data-slug-hash="xEGRdv" data-default-tab="result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160812" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/xEGRdv/">160812</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-次に、フェードインの最中にフェードアウト、もしくは、フェードアウトの最中にフェードインが発生した場合の対策を施しましょう。
-これもまた、後に発生したメソッドの完了後に、先に発生していたメソッドの目標値へ再度変動してしまうなど、想定外の挙動が発生してしまうためです。
+接下来，需要考虑在淡入的过程中淡出或者在淡出的过程中淡入的情况下对应的措施。
 
-AudioParamオブジェクトのcancelScheduledValuesメソッドは、オートメーションメソッドによって未来に登録されている値の変動を、すべてキャンセルしてくれます。
-これをsetValueAtTimeの前に実行しておくことで、イベント発生中の別イベント発生に対処することができます。
+这是因为有可能中途会执行其他方法，需要使之前的方法再次改变它的目标值，是意料之外的举动。
+
+AudioParam对象的cancelScheduledValues方法是一种将未来的注册值全部取消的自动方法。
+
+它需要在setValueAtTime之前执行，处理在事件发生过程中发生其他事件的情况。
 
 <p data-height="265" data-theme-id="0" data-slug-hash="vXOyZK" data-default-tab="result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160813" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/vXOyZK/">160813</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-また、このままでは、途中から発生したフェードイン・フェードアウトにも常に3秒の時間をかけてしまうため、最後にそこも対策しておきましょう。
+除此之外，还需要控制在中途进行的淡入·淡出时的执行时间，最后来处理这种情况。
 
 <p data-height="265" data-theme-id="0" data-slug-hash="ZpGvoa" data-default-tab="result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160814" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/ZpGvoa/">160814</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-このページではこれ以上AudioContextオブジェクトを作れない……！　というわけで、最後の実行結果はこちらでご確認ください。
+在这个页面上AudioContext已经物尽其用了！可以在[这里](http://sho.netlify.com/)看到最终的结果。
 
 <p data-height="265" data-theme-id="0" data-slug-hash="akZRJp" data-default-tab="result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="1608-completed" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/akZRJp/">1608-completed</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 [运行结果](http://sho.netlify.com/)
 
-ついでに背景もクリック・タッチに連動させてあります。天から差し込む光を表……せているでしょうか？　完成です！
+背景会随着点击·触摸的动作变化，宛如...从天上射出的光芒？完成了！
+
+### 总结
+
+这次介绍了在浏览器上生成音源的方法。
+
+除了四种基本波形以外，WebAudioAPI也可以生成自定义的波形与复杂的噪声。
+
+虽然自定义音源比起现成的音源文件实现起来更加复杂，不过相对来说也更加自由。
+
+请务必尝试一下。
+
+那么回见！
+
