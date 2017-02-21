@@ -101,3 +101,31 @@ AnalyserNodeは中間処理の一つと言えますが、視覚化などに用�
 取得した値は、このようにただ画面に表示させるだけでなく、CSSやJSの値として使うことももちろん可能です。
 
 次にいくつかその実例を挙げてみます。
+
+### 取得した音量の値をCSSの値に適用してみる
+
+1つ目は、CSSのopacityに適用してみた例です。
+消音状態では透明なSVGが、音を感知すると画面に現れます。
+
+<p data-height="265" data-theme-id="0" data-slug-hash="WGxKvo" data-default-tab="js,result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160904-opacity" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/WGxKvo/">160904-opacity</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+2つ目は、CSSのcolorに適用してみた例です。
+消音状態では何も起きませんが、音を感知するとSVGの色が変化します。
+
+<p data-height="265" data-theme-id="0" data-slug-hash="kkXjkZ" data-default-tab="js,result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160904-color" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/kkXjkZ/">160904-color</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+3つ目は、CSSのtransform: rotate();に適用してみた例です。
+消音状態では停止したSVGが、音を感知すると回転します。
+
+<p data-height="265" data-theme-id="0" data-slug-hash="KgrBYZ" data-default-tab="js,result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160904-rotate" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/KgrBYZ/">160904-rotate</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+## まとめ
+
+今回は、マイクからの音声を音源として利用する方法と、音源を解析する方法をご紹介しました。再生、加工、生成、解析と、できることがどんどん増えてきてきましたね。
+
+さて、これらを組み合わせて次は何を作ろうかな……。
+
+ワクワクが止まらないつっちーでした。ではまた！
