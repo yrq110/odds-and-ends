@@ -8,48 +8,48 @@
 
 ***
 
-今回は、音源の解析と、その結果の視覚化について紹介します。
+这次介绍解析音源并可视化的方法。
 
-> ・この記事を読むときは、お使いのブラウザの他のタブ、ウインドウでWebAudioAPIが使用されていないことをご確認願います。
-・コードプレビューのJS全体が即時関数で囲われている場合、その即時関数は実際には不要であると考えてください。
-> Webブラウザは同時に存在できるAudioContextオブジェクトの数に制限をかけています。
-通常、AudioContextオブジェクトが1アプリケーションに複数必要となることはなく、この制限に困ることはありません。
-ただし、複数のタブ、ウインドウ、iframeでWebAudioAPIが使用される場合にはエラー発生の可能性があるため、本記事では処理を即時終了させることで対策を行っております。
+> 请确保在阅读本文时，浏览器的其他标签或窗口没有在使用WebAudioAPI。
+>
+> Web浏览器对同时存在的AudioContext对象数量是有限制的。一般情况下一个应用不需要用到多个AudioContext对象，这个限制也就不会让人令人困惑了。不过有可能多个标签、窗口或iframe同时使用WebAudioAPI，这样就会发生错误，因此在阅读本篇文章时需要先终止其他地方的使用。
 
-## 音源の情報を解析し視覚化するWebサイト
+## 将音源数据解析后进行可视化的网站
 ### Loop Waveform Visualizer
 
 ![](https://cdn.liginc.co.jp/wp-content/uploads/2016/06/waa03.png)
 
 [https://airtightinteractive.com/demos/js/reactive](https://airtightinteractive.com/demos/js/reactive)
-こちらは、以前にも紹介した音源を再生しながら視覚化するWebサイトです。
 
-mp3ファイルを画面にドロップ、もしくは「load sample mp3」をクリックすると再生が始まります。
+这个是之前介绍的将播放的音源可视化的网站。
 
-このサイトでは、瞬間瞬間の音量をWebAudioAPIによって解析し、音量の値が反映された円形をThree.jsによって描画することで、視覚化を実現しています。
-音声ファイルの扱いに関してはこれまでの記事でも紹介してきましたので、この記事では、解析対象をマイクからの音声に置き換えてみましょう。
+将mp3文件拖拽到界面中，或者点击「load sample mp3」(加载示例音乐)开始播放。
 
-## 「Web Audio API」を使って音にあわせて画面を変化させてみよう
+这个网站使用WebAudioAPI解析音源每一时刻的音量，使用Three.js的圆形展现音量值的大小，实现可视化。
 
-### マイクから取得した音を音源として利用してみる
+至今为止的文章都是介绍音频文件的操作，这次将操作的对象换成从麦克风得到的声音。
 
-音声や動画などのメディアコンテンツは、MediaStreamオブジェクトとして表現されます。MediaStreamオブジェクトは、navigator.mediaDevicesオブジェクトのメソッド、getUserMediaによって取得します。
+## 使用「Web Audio API」根据声音调整显示画面
 
-このMediaStreamオブジェクトをWebAudioAPIから扱うには、MediaStreamAudioSourceNodeというAudioNodeを使用します。
+### 使用麦克风的输入作为音源
 
->【getUserMediaを使用する上での注意】
+声音与动画等的多媒体内容一般使用MediaStream对象，可以通过使用navigator.mediaDevices对象的getUserMedia方法来获得MediaStream对象。
 
-getUserMediaを使用する場合は、下記の3点に注意する必要があります。
+要在WebAudioAPI操作MediaStream对象的话需要使用AudioNode中的MediaStreamAudioSourceNode。
 
-1. Safari(Mac/iOSとも)未対応
+>【使用getUserMedia的注意事项】
 
-  現状ではMac,iOS両方のSafariにまだ実装されていません。
-  というわけで、今回の内容はスマートフォン対象外となります……つらい。
-2. ポリフィルが必要
+使用getUserMedia时需要注意以下3点。
 
-  getUserMediaは、以前navigatorオブジェクトのメソッド（navigator.getUserMedia）として実装されていましたが、現在そちらの実装は非推奨となっています。そのため、すべてのブラウザでnavigator.mediaDevices.getUserMediaとしてこのメソッドを利用するには、ポリフィルを用意する必要があります。詳しくはMDNをご参照ください。
+1. 不支持Safari(Mac/iOS)
+
+  目前[Mac与iOS的Safari都未实现这个方法](http://caniuse.com/#search=getusermedia)。
+  というわけで、今回の内容はスマートフォン対象外となります……つらい。
+2. 需要polyfill
+
+  getUserMedia以前是navigator对象的一个方法(navigator.getUserMedia)，而现在不推荐这样做，目前所有的浏览器都是通过调用navigator.mediaDevices.getUserMedia来使用这个方法，准备了必要的polyfill。详情请参见[MDN](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia)。
   以降に埋め込んでいるコードプレビューでも、MDNで紹介されているものを参考としたポリフィルを用意し、あらかじめ読み込んでいます。
-3. HTTPSでアクセスしたページでないと使用できない
+3. 必须是HTTPS
 
   getUserMediaは、セキュリティ対策のため、HTTPS（暗号化通信）でアクセスしたページでなければ失敗するように実装されています。現在では、GithubPagesやCodePen、Netlifyなど、無料サービスでも暗号化通信が有効である場合が多いです。
   個人で証明書を発行することが難しい場合は、ぜひこれらを活用してみてください。
