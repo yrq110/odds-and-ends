@@ -54,22 +54,24 @@
   getUserMediaは、セキュリティ対策のため、HTTPS（暗号化通信）でアクセスしたページでなければ失敗するように実装されています。現在では、GithubPagesやCodePen、Netlifyなど、無料サービスでも暗号化通信が有効である場合が多いです。
   個人で証明書を発行することが難しい場合は、ぜひこれらを活用してみてください。
 
-ではまず、最終出力に直接つないでみましょう。
-以下のコードを、RESULTボタンで実行してみてください。
+那么下面先将其连接到最终输出上吧。
+
+点击RESULT按钮执行下面代码。
 
 <p data-height="265" data-theme-id="0" data-slug-hash="jrbJGX" data-default-tab="js" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160901" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/jrbJGX/">160901</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-周囲の音がほんの少し遅れて聞こえてくる、そんな状態になっているかと思います。
+应该能听到周围的声音，会有一些延迟。
 
-MediaStreamオブジェクトは、生成された直後にマイクからの音声取得を開始し、その情報はリアルタイムに更新されていきます。MediaStreamAudioSourceNodeもまた、生成されたあと、他のAudioNodeに接続するとすぐ、出力を開始します。
+在从麦克风得到声音后会生成MediaStream对象，这个对象的数据是实时更新的。オブジェクトは、生成された直後にマイクからの音声取得を開始し、その情報はリアルタイムに更新されていきます。MediaStreamAudioSourceNodeもまた、生成されたあと、他のAudioNodeに接続するとすぐ、出力を開始します。
 
-マイクから音声を取得できることを確認できたので、次は音源を解析し、音量を取得してみましょう。
+成功获得麦克风的输入声音后，接着要解析音源得到音量的值。
 
-### 音源を解析して音量を取得してみる
+### 解析出音源的音量大小
 
-解析処理は、AnalyserNodeというAudioNodeによって表されます。
-AnalyserNodeは、音源を解析するメソッドをいくつか持っています。これらのメソッドは、それぞれ実行結果として得られる値の型が決まっており、それに対応する型付き配列をその格納先として必要とします。
+使用AudioNode中的AnalyserNode来进行解析处理。
+
+AnalyserNode具有几个解析音源的方法，这些方法 nalyserNodeは、音源を解析するメソッドをいくつか持っています。これらのメソッドは、それぞれ実行結果として得られる値の型が決まっており、それに対応する型付き配列をその格納先として必要とします。
 
 今回はその中から、周波数ごとの波形の振幅を符号無しの8ビット整数、つまり0～255の範囲で表し、配列に格納するメソッド、getByteFrequencyDataを使用します。
 
@@ -81,13 +83,14 @@ frequencyBinCountプロパティには、同じくAnalyserNodeオブジェクト
 
 fftSizeの1/2の値であるfrequencyBinCountプロパティは、常にこの境界値を表しており、その値を型付き配列の要素数に指定すべき理由は、それ以上の解析結果が不要であるためです。
 
-今回は、解析結果の全周波数の振幅から平均の振幅を求め、それを音量として利用します。
+解析结果为所有频率声波的振幅的平均值，将其作为音量的大小。 
 
 <p data-height="265" data-theme-id="0" data-slug-hash="vXLYVZ" data-default-tab="js" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160902" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/vXLYVZ/">160902</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-これで解析の準備がととのいました。
-音源となるMediaStreamAudioSourceNodeをAnalyserNodeに接続して出力を開始させ、requestAnimationFrameを使って1フレームごとにHTMLへ音量を表示させてみましょう。
+这样就做好解析的准备了。
+
+将音源MediaStreamAudioSourceNode与AnalyserNode连接起来，使用requestAnimationFrame的每一帧来表示音量并通过HTML标签展现。
 
 AnalyserNodeは中間処理の一つと言えますが、視覚化などに用いられるため、必ずしも出力が必要とは限りません。そのため、最終出力を表すAudioNodeではないにもかかわらず、別のAudioNodeへの出力が必須ではありません。
 
@@ -122,11 +125,11 @@ AnalyserNodeは中間処理の一つと言えますが、視覚化などに用�
 <p data-height="265" data-theme-id="0" data-slug-hash="KgrBYZ" data-default-tab="js,result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160904-rotate" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/KgrBYZ/">160904-rotate</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-## まとめ
+## 总结
 
-今回は、マイクからの音声を音源として利用する方法と、音源を解析する方法をご紹介しました。再生、加工、生成、解析と、できることがどんどん増えてきてきましたね。
+这次介绍了从麦克风获取音源与解析音源的方法。播放、加工、生成、解析，可以做的事情越来越多了呢。
 
-さて、これらを組み合わせて次は何を作ろうかな……。
+将这些组合起来下次会做些什么呢……。
 
-ワクワクが止まらないつっちーでした。ではまた！
+已经迫不及待了吧，那么回见！
 
