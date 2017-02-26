@@ -105,22 +105,25 @@ AnalyserNodeは中間処理の一つと言えますが、視覚化などに用�
 
 次にいくつかその実例を挙げてみます。
 
-### 取得した音量の値をCSSの値に適用してみる
+### 将音量值与CSS属性值结合
 
-1つ目は、CSSのopacityに適用してみた例です。
-消音状態では透明なSVGが、音を感知すると画面に現れます。
+第一个例子是用在CSS的opacity属性上。に適用してみた例です。
+
+静音时为透明的SVG，检测到声音后出现画面。
 
 <p data-height="265" data-theme-id="0" data-slug-hash="WGxKvo" data-default-tab="js,result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160904-opacity" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/WGxKvo/">160904-opacity</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-2つ目は、CSSのcolorに適用してみた例です。
-消音状態では何も起きませんが、音を感知するとSVGの色が変化します。
+第二个例子是用在CSS的color属性上。
+
+静音时什么都不会发生，检测到声音后SVG的颜色会发生变化。
 
 <p data-height="265" data-theme-id="0" data-slug-hash="kkXjkZ" data-default-tab="js,result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160904-color" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/kkXjkZ/">160904-color</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-3つ目は、CSSのtransform: rotate();に適用してみた例です。
-消音状態では停止したSVGが、音を感知すると回転します。
+第三个例子是用在CSS的transform: rotate();变换。
+
+静音时为静止的SVG，检测到声音后开始旋转。
 
 <p data-height="265" data-theme-id="0" data-slug-hash="KgrBYZ" data-default-tab="js,result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160904-rotate" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/KgrBYZ/">160904-rotate</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
