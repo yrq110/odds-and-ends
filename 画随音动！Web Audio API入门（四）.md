@@ -44,15 +44,14 @@
 1. 不支持Safari(Mac/iOS)
 
   目前[Mac与iOS的Safari都未实现这个方法](http://caniuse.com/#search=getusermedia)。
-  というわけで、今回の内容はスマートフォン対象外となります……つらい。
 2. 需要polyfill
 
   getUserMedia以前是navigator对象的一个方法(navigator.getUserMedia)，而现在不推荐这样做，目前所有的浏览器都是通过调用navigator.mediaDevices.getUserMedia来使用这个方法，准备了必要的polyfill。详情请参见[MDN](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia)。
-  以降に埋め込んでいるコードプレビューでも、MDNで紹介されているものを参考としたポリフィルを用意し、あらかじめ読み込んでいます。
+  [这里](https://github.com/lig-dsktschy/ligfes20160426/blob/gh-pages/01/js/getusermedia-commented.js)将MDN介绍中关于老版本浏览器使用getUserMedia的polyfill代码提取了出来，可以先看看。
 3. 必须是HTTPS
 
-  getUserMediaは、セキュリティ対策のため、HTTPS（暗号化通信）でアクセスしたページでなければ失敗するように実装されています。現在では、GithubPagesやCodePen、Netlifyなど、無料サービスでも暗号化通信が有効である場合が多いです。
-  個人で証明書を発行することが難しい場合は、ぜひこれらを活用してみてください。
+  由于安全策略必须使用HTTPS访问才能正常使用getUserMedia，否则会失败。目前很多网站如GithubPages、CodePen、Netlify都提供了免费的HTTPS服务，直接使用HTTPS访问即可。
+  如果配置个人证书的话比较复杂，还是使用上面的那几个站测试吧。
 
 那么下面先将其连接到最终输出上吧。
 
@@ -63,7 +62,7 @@
 
 应该能听到周围的声音，会有一些延迟。
 
-在从麦克风得到声音后会生成MediaStream对象，这个对象的数据是实时更新的。オブジェクトは、生成された直後にマイクからの音声取得を開始し、その情報はリアルタイムに更新されていきます。MediaStreamAudioSourceNodeもまた、生成されたあと、他のAudioNodeに接続するとすぐ、出力を開始します。
+在从麦克风得到声音后会生成MediaStream对象，这个对象的数据是实时更新的。将生成的MediaStreamAudioSourceNode与其他AudioNode连接进行音频输出。
 
 成功获得麦克风的输入声音后，接着要解析音源得到音量的值。
 
@@ -71,17 +70,17 @@
 
 使用AudioNode中的AnalyserNode来进行解析处理。
 
-AnalyserNode具有几个解析音源的方法，这些方法 nalyserNodeは、音源を解析するメソッドをいくつか持っています。これらのメソッドは、それぞれ実行結果として得られる値の型が決まっており、それに対応する型付き配列をその格納先として必要とします。
+AnalyserNode具有几个解析音源的方法，由于这些方法执行结果的类型各不相同，需要准备对应类型的数组进行存储。
 
-今回はその中から、周波数ごとの波形の振幅を符号無しの8ビット整数、つまり0～255の範囲で表し、配列に格納するメソッド、getByteFrequencyDataを使用します。
+每个频率波的振幅为8bit的无符号整数，即0~255。使用getByteFrequencyData方法可以直接将数据存储在数组中。
 
-実行結果として得られる値の型が符号無しの8ビット整数であるため、格納先として必要になる配列はUint8Arrayです。型付き配列は生成時に要素の数を指定する必要がありますが、それにはAnalyserNodeオブジェクトのfrequencyBinCountプロパティを使いましょう。
+由于执行得到的结果是无符号的8bit整数，要存储在类型为Uint8Array的数列中，生成类型数组时还必须制定其中的元素个数，可以使用AnalyserNode对象的frequencyBinCount属性。
 
-frequencyBinCountプロパティには、同じくAnalyserNodeオブジェクトのプロパティであるfftSizeの1/2の値が設定されています。fftSizeプロパティは、周波数ごとの波形の振幅を解析するメソッドが、どれだけ細かな周波数ごとに解析するかを示す値で、デフォルトでは2048に設定されています。この値は、アナログ波形のデジタル化粒度を表すサンプリング周波数に対応し、例えば2048である場合、0Hzからデフォルトのサンプリング周波数である44100Hzまでが、均等に2048等分されて解析されます。
+frequencyBinCount属性应设为AnalyserNode对象的另一个属性fftSize值的一半。fftsize属性的值表示解析频率波振幅的方法要将波形分的有多细，若这个值较大，那么解析后的每一部分就很小，默认值为2048，它表示模拟信号转化为数字信号时的颗粒数量，对应采样频率，比如说当它为2048时，根据默认的采样频率会将从0Hz到44100Hz的部分解析为均等的2048份。
 
-ただし、サンプリング定理によると、サンプリング周波数の1/2以上のデジタル波形は、アナログ波形に復元不可能であり意味を持ちません。つまり、解析結果も半分まで、つまりfftSizeの値が2048の場合は1024個までしか意味を持たないということになります。
+不过根据奈奎斯特采样定理，若数字信号的频率大于采样频率的一半则不能还原为模拟信号，因此只有一半的解析结果是有意义的，可以使用的。
 
-fftSizeの1/2の値であるfrequencyBinCountプロパティは、常にこの境界値を表しており、その値を型付き配列の要素数に指定すべき理由は、それ以上の解析結果が不要であるためです。
+frequencyBinCount属性的值一般为fftSize值的一半，这个值是临界值，至于为何要使用这个值作为类型数组的元素个数，根据上述理由，除了这些数量外的信号是没有意义的。
 
 解析结果为所有频率声波的振幅的平均值，将其作为音量的大小。 
 
@@ -92,22 +91,22 @@ fftSizeの1/2の値であるfrequencyBinCountプロパティは、常にこの�
 
 将音源MediaStreamAudioSourceNode与AnalyserNode连接起来，使用requestAnimationFrame的每一帧来表示音量并通过HTML标签展现。
 
-AnalyserNodeは中間処理の一つと言えますが、視覚化などに用いられるため、必ずしも出力が必要とは限りません。そのため、最終出力を表すAudioNodeではないにもかかわらず、別のAudioNodeへの出力が必須ではありません。
+AnalyserNode相当于一个中间处理，用于数据的可视化，因此它的音源输出可有可无，将它连接到表示最终输出的AudioNode上也并不是必须的。
 
-今回の場合も、音量の数値化が目的であり再生は必要ないため、AnalyserNode以降、最終出力には接続していません。
+由于这次的目的是进行音量的数值化，不需要播放声音，因此就不用将AnalyserNode连接到最终输出上了。
 
 <p data-height="265" data-theme-id="0" data-slug-hash="bwENGz" data-default-tab="js,result" data-user="lig-dsktschy" data-embed-version="2" data-pen-title="160903" class="codepen">See the Pen <a href="http://codepen.io/lig-dsktschy/pen/bwENGz/">160903</a> by ligdsktschy (<a href="http://codepen.io/lig-dsktschy">@lig-dsktschy</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-周囲の音や声によって画面の数字が上下していますでしょうか。
+可以观察到，根据周围的声音变化画面中的数字会上下变动吧。
 
-取得した値は、このようにただ画面に表示させるだけでなく、CSSやJSの値として使うことももちろん可能です。
+除了将取得的音量值这样表示出来，也可以结合CSS与JS属性进行操作。
 
-次にいくつかその実例を挙げてみます。
+下面列举几个例子。
 
 ### 将音量值与CSS属性值结合
 
-第一个例子是用在CSS的opacity属性上。に適用してみた例です。
+第一个例子是用在CSS的opacity属性上。
 
 静音时为透明的SVG，检测到声音后出现画面。
 
