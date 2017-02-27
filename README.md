@@ -8,3 +8,5 @@
 6. [把浏览器变成钢琴！Web Audio API入门](把浏览器变成钢琴！Web Audio API入门.md)
 7. [听听雨声放放松！Web Audio API入门（二）](听雨声放放松！Web Audio API入门（二）.md)
 8. [笙之和音，雅之氛围！Web Audio API入门（三）](笙之和音，雅之氛围！Web Audio API入门（三）.md)
+9. [画随音动！Web Audio API入门（四）](画随音动！Web Audio API入门（四）.md)
+10. [使用Web Audio Editor进行更直观的开发！Web Audio API入门（五）](使用Web Audio Editor进行更直观的开发！Web Audio API入门（五）.md)
