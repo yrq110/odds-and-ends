@@ -33,9 +33,9 @@
 
 ### 使用麦克风的输入作为音源
 
-声音与动画等的多媒体内容一般使用MediaStream对象，可以通过使用navigator.mediaDevices对象的getUserMedia方法来获得MediaStream对象。
+声音与动画等的多媒体内容一般存储在MediaStream对象中，可以通过使用navigator.mediaDevices对象的getUserMedia方法来获得MediaStream对象。
 
-要在WebAudioAPI操作MediaStream对象的话需要使用AudioNode中的MediaStreamAudioSourceNode。
+要使用WebAudioAPI操作MediaStream对象的话需要使用AudioNode中的MediaStreamAudioSourceNode。
 
 > 使用getUserMedia的注意事项
 
@@ -51,7 +51,7 @@
 3. 必须是HTTPS
 
   由于安全策略必须使用HTTPS访问才能正常使用getUserMedia，否则会失败。目前很多网站如GithubPages、CodePen、Netlify都提供了免费的HTTPS服务，直接使用HTTPS访问即可。
-  如果配置个人证书的话比较复杂，还是使用上面的那几个站测试吧。
+  配置个人证书的话比较复杂，还是使用上面的那几个站测试吧。
 
 那么下面先将其连接到最终输出上吧。
 
