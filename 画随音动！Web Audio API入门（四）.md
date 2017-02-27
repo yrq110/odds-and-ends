@@ -37,7 +37,7 @@
 
 要在WebAudioAPI操作MediaStream对象的话需要使用AudioNode中的MediaStreamAudioSourceNode。
 
->【使用getUserMedia的注意事项】
+> 使用getUserMedia的注意事项
 
 使用getUserMedia时需要注意以下3点。
 
@@ -72,7 +72,7 @@
 
 AnalyserNode具有几个解析音源的方法，由于这些方法执行结果的类型各不相同，需要准备对应类型的数组进行存储。
 
-每个频率波的振幅为8bit的无符号整数，即0~255。使用getByteFrequencyData方法可以直接将数据存储在数组中。
+每个频率波的振幅为8bit的无符号整数，即0~255。使用getByteFrequencyData方法可以直接将数据存储在参数中指定的数组。
 
 由于执行得到的结果是无符号的8bit整数，要存储在类型为Uint8Array的数列中，生成类型数组时还必须制定其中的元素个数，可以使用AnalyserNode对象的frequencyBinCount属性。
 
