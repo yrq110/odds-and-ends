@@ -11,36 +11,31 @@
 
 ![](https://cdn.liginc.co.jp/wp-content/uploads/2017/01/148481536457291800_80-1310x874.jpg)
 
-こんにちは。フロントエンドエンジニアのつっちーです。
+不知不觉已经到（五）了。
 
-タイトルの「続」に「々」が増えすぎてゾクゾクしていますが、引き続き「Web Audio API」入門です。
+这次介绍一下Firefox中用于WebAudioAPI辅助开发的工具-「Web Audio Editor」。
 
-今回は、WebAudioAPIによる開発を補助してくれるFirefoxの機能、「Web Audio Editor」についてご紹介します。
+## 「Web Audio Editor」是什么？
 
-## 「Web Audio Editor」とは？
+Web Audio Editor是Firebox浏览器所提供的一个WebAudioAPI辅助开发的工具(至2016年11月时还没有其他浏览器提供类似的功能，我觉得当Web Audio API成为W3C的推荐标准时，其他浏览器应该也会具备这个功能吧)。
 
-Web Audio Editorは、Firefoxが提供する、WebAudioAPIを用いた開発のための補助機能です（2016年 11月時点で、他のブラウザでは同等の機能は提供されておりませんが、Web Audio APIが W3C の“勧告”となる頃にはきっと、他のブラウザにも高度な補助機能が備わっていることと思います）。
+使用这个工具可以看到AudioNode的连接状态、拥有的AudioNode与各AudioParam对象的value属性。
 
-この機能は、AudioNode の接続状態を可視化し、AudioNode が持つ、各 AudioParamオブジェクトの valueプロパティを一覧表示します。
+## 使用「Web Audio Editor」
+### 打开「Web Audio Editor」
 
-## 「Web Audio Editor」を使ってみよう
-### 「Web Audio Editor」の起動
+首先打开Firefox。
 
-まず、Firefoxを起動しましょう。
-
-Web Audio Editorは、Firefox の「開発ツール」の一部です。
-そのため、Firefoxを起動したら、開発ツールを開きましょう。
+Web Audio Editor是Firefox浏览器开发工具中的一部分。因此打开Firefox后先打开开发工具。
 
 ![](https://cdn.liginc.co.jp/wp-content/uploads/2017/01/148481503268393000_29.png)
 
-Windowsでは、 ctrl + shift + I 、MacOSXでは command + option + I を押下することで開くことができます。
+Windows下使用ctrl + shift + I快捷键，MacOSX下使用command + option + I快捷键。
 
-Web Audio Editorは、デフォルトでは無効化されています。開発ツールからオプションを選択し、「Web Audio」にチェックを入れましょう。
+由于默认是禁用Web Audio Editor的，需要在开发工具的设置里勾选上「Web Audio」（译者注:中文版的火狐浏览器中这个选项为「网络音频」）。
 
 ![](https://cdn.liginc.co.jp/wp-content/uploads/2016/11/147822815299567000_66.png)
 
-これでタブに「Web Audio」が追加され、Web Audio Editorが使用可能となります。
+这样在标签栏中就有「Web Audio」了，可以正常使用Web Audio Editor了。
 
-タブの「Web Audio」を選択した状態でページ遷移すると、遷移先のページで生成される AudioContext に対して検証が行われます。すでに表示しているページの AudioContext に対して検証を行う場合は、再読み込みを行ってください。
-
-
+选中标签栏中「Web Audio」会有一个过渡页面，会对过渡前页面的AudioContext进行验证。若已经对当前页的AudioContext进行验证过了，就不用再次载入了。
