@@ -2,8 +2,7 @@
 
 ***
 
->* 原文链接 : [使用Web Audio Editor进行更直观的开发！Web Audio API入门（五）
-](https://liginc.co.jp/322853)
+>* 原文链接 : [「Web Audio Editor」でより直感的なWeb Audio API開発を！ – 続々々々「Web Audio API」入門 ](https://liginc.co.jp/322853)
 * 原文作者 : [つっちー](http://liginc.co.jp/member/member_detail?user=tsuchiya)
 * 译者 : [yrq110](https://github.com/yrq110)
 
@@ -39,3 +38,35 @@ Windows下使用ctrl + shift + I快捷键，MacOSX下使用command + option + I�
 这样在标签栏中就有「Web Audio」了，可以正常使用Web Audio Editor了。
 
 选中标签栏中「Web Audio」会有一个过渡页面，会对过渡前页面的AudioContext进行验证。若已经对当前页的AudioContext进行验证过了，就不用再次载入了。
+
+### 检查AudioNode的连接状态
+
+在使用Web Audio API开发时，会使用AudioNode的connect方法将多个AudioNode连接起来。在操作大量AudioNode的场合下，有时需要根据条件切换AudioNode间的连接状态，这时就很难通过代码来掌握AudioNode之间的连接状态吧。
+
+Web Audio Editor通过将AudioNode的连接状态可视化来解决这个问题。
+
+来实际操作下Web Audio Editor检查连接状态吧。
+
+首先看看将表示音源的AudioNode连接到表示最终输出的AudioNode上的[demo](https://lig-dsktschy.github.io/wpapi-osc/1/)(点击链接前注意播放音量)。
+
+![](https://cdn.liginc.co.jp/wp-content/uploads/2016/11/147823213859569600_70.png)
+
+每个AudioNode都用一个框表示，并使用一个箭头连接线表示执行connect方法的AudioNode与目标AudioNode之间的连接。
+
+下面来看看同时输出多个音源的[demo](https://lig-dsktschy.github.io/wpapi-osc/2/)(点击链接前注意播放音量)。
+
+![](https://cdn.liginc.co.jp/wp-content/uploads/2016/11/147823215716495900_11.png)
+
+所有表示音源的AudioNode都连接到了表示最终输出的AudioNode上，使用框图与带箭头的连接线表示。
+
+那么如果连接到输出的音源变化时怎么办呢，来看看这个使用按键控制连接的[demo](https://lig-dsktschy.github.io/wpapi-osc/3/)(点击链接前注意播放音量)。
+
+![](https://cdn.liginc.co.jp/wp-content/uploads/2016/11/147823217765772200_99.png)
+
+在表示AudioNode的方框间，在连接前没有箭头连接线。
+
+![](https://cdn.liginc.co.jp/wp-content/uploads/2016/11/147823220931717800_67.png)
+
+在连接时出现了箭头连接线。
+
+像这样在Web Audio Editor中可以实时可视化的表示AudioNode的连接状态。
