@@ -70,3 +70,39 @@ Web Audio Editor通过将AudioNode的连接状态可视化来解决这个问题�
 在连接时出现了箭头连接线。
 
 像这样在Web Audio Editor中可以实时可视化的表示AudioNode的连接状态。
+
+### AudioParamオブジェクトの確認
+
+Web Audio API による開発では、AudioNode だけではなく、それぞれの AudioNode が持つ AudioParam オブジェクトも複数扱います。これもまた、複雑な内容になると、その時々の状態を把握することは困難でしょう。
+
+Web Audio Editorは、各 AudioParam オブジェクトの value プロパティを一覧表示することで、この問題も解決してくれます。
+
+実際に、Web Audio Editor によって各 AudioParam オブジェクトの value プロパティを確認してみましょう。先ほどの複数の音源を一度に出力するサンプル（リンク先は音が出ます）を再度ひらき、今度は音源となる AudioNode のボックスをクリックしてみてください。
+
+![](https://cdn.liginc.co.jp/wp-content/uploads/2016/11/147823224650594300_42.png)
+
+クリックされた AudioNode のボックスが青くなり、「プロパティ」という欄が表示されましたでしょうか。
+
+これが、クリックされた AudioNode の持つ AudioParam オブジェクトの value プロパティ一覧です。この場合では、OscillatorNodeの持つtype.value, frequency.value, detune.value が表示されています。
+
+またここでは、別の AudioNode のボックスをクリックし、それぞれの frequency.value に別の値が設定されていることも確認してみてください。
+
+では、AudioParam オブジェクトの value プロパティを変動させてみるとどうなるでしょうか。これまでの内容に、レンジバーによる音量調節機能を加えたサンプル（リンク先は音が出ます）で確認します。
+
+![](https://cdn.liginc.co.jp/wp-content/uploads/2016/11/147823226271241100_56.png)
+
+中間処理を表す AudioNode が追加されていることを確認できたら、そのボックスをクリックしてみてください。この場合では、GainNode の持つ gain.value が表示されたかと思います。
+
+次に、いま value プロパティを確認した AudioNode に対応するレンジバーを左右させ、gain.value を調節してみてください。そして、再度同じボックスをクリックすると、gain.value の表示が調節後の値に更新されることを確認できるはずです。
+
+このように、Web Audio Editor は AudioParam オブジェクトの value プロパティに関しても、その時々の状態を表示してくれます。ただし、AudioNode の接続状態と違って、リアルタイムに反映されないことに注意してください。
+
+AudioParam オブジェクトの value プロパティの表示は、ボックスがクリックされたタイミングで、現在の値に更新されます。
+
+## まとめ
+
+自分で作成したページだけでなく、既存のページをWeb Audio Editorで検証することももちろん可能です。
+
+Web Audio APIを用いたページの開発、そして分析にも、Web Audio Editorは大きな助けとなります。どんどん活用していきたいですね。
+
+ではまた！　つっちーでした。
