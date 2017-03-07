@@ -53,13 +53,13 @@ Web Audio Editor通过将AudioNode的连接状态可视化来解决这个问题�
 
 每个AudioNode都用一个框表示，并使用一个箭头连接线表示执行connect方法的AudioNode与目标AudioNode之间的连接。
 
-下面来看看同时输出多个音源的[demo](https://lig-dsktschy.github.io/wpapi-osc/2/)(点击链接前注意播放音量)。
+下面来看看同时输出多个音源的[demo](https://lig-dsktschy.github.io/wpapi-osc/2/)(点击链接前打开声音)。
 
 ![](https://cdn.liginc.co.jp/wp-content/uploads/2016/11/147823215716495900_11.png)
 
 所有表示音源的AudioNode都连接到了表示最终输出的AudioNode上，使用框图与带箭头的连接线表示。
 
-那么如果连接到输出的音源变化时怎么办呢，来看看这个使用按键控制连接的[demo](https://lig-dsktschy.github.io/wpapi-osc/3/)(点击链接前注意播放音量)。
+那么如果连接到输出的音源变化时怎么办呢，来看看这个使用按键控制连接的[demo](https://lig-dsktschy.github.io/wpapi-osc/3/)(点击链接前打开声音)。
 
 ![](https://cdn.liginc.co.jp/wp-content/uploads/2016/11/147823217765772200_99.png)
 
@@ -71,23 +71,23 @@ Web Audio Editor通过将AudioNode的连接状态可视化来解决这个问题�
 
 像这样在Web Audio Editor中可以实时可视化的表示AudioNode的连接状态。
 
-### AudioParamオブジェクトの確認
+### 检查AudioParam对象
 
-Web Audio API による開発では、AudioNode だけではなく、それぞれの AudioNode が持つ AudioParam オブジェクトも複数扱います。これもまた、複雑な内容になると、その時々の状態を把握することは困難でしょう。
+在使用Web Audio API开发时，不仅要操作AudioNode，也要操作AudioNode所持有的AudioParam对象，当代码与操作的AudioNode更加复杂时，要把握这些对象与属性就比较困难了。 
 
-Web Audio Editorは、各 AudioParam オブジェクトの value プロパティを一覧表示することで、この問題も解決してくれます。
+Web Audio Editor通过将所有AudioParam对象的值属性全部列出来解决了这个问题。
 
-実際に、Web Audio Editor によって各 AudioParam オブジェクトの value プロパティを確認してみましょう。先ほどの複数の音源を一度に出力するサンプル（リンク先は音が出ます）を再度ひらき、今度は音源となる AudioNode のボックスをクリックしてみてください。
+请实际操作下，使用Web Audio Editor查看AudioParam对象的值属性。再看看刚才的那个同时播放多个音源的[demo](https://lig-dsktschy.github.io/wpapi-osc/2/)(点击链接前打开声音)，这次请点击一下表示AudioNode的方框。
 
 ![](https://cdn.liginc.co.jp/wp-content/uploads/2016/11/147823224650594300_42.png)
 
-クリックされた AudioNode のボックスが青くなり、「プロパティ」という欄が表示されましたでしょうか。
+点击AudioNode后框体会变为蓝色，并且出现了属性栏。
 
-これが、クリックされた AudioNode の持つ AudioParam オブジェクトの value プロパティ一覧です。この場合では、OscillatorNodeの持つtype.value, frequency.value, detune.value が表示されています。
+在属性栏这里可以看到AudioNode所拥有的AudioParam对象的值，图中所显示的是OscillatorNode的type, frequency, detune三个属性的值。
 
-またここでは、別の AudioNode のボックスをクリックし、それぞれの frequency.value に別の値が設定されていることも確認してみてください。
+点击其它AudioNode的方框可以看到它们的frequency属性值。
 
-では、AudioParam オブジェクトの value プロパティを変動させてみるとどうなるでしょうか。これまでの内容に、レンジバーによる音量調節機能を加えたサンプル（リンク先は音が出ます）で確認します。
+那么改变AudioParam对象的属性值会有什么效果呢，看看这个添加了进度条调整音量的[demo](https://lig-dsktschy.github.io/wpapi-osc/4/)(点击链接前打开声音)。
 
 ![](https://cdn.liginc.co.jp/wp-content/uploads/2016/11/147823226271241100_56.png)
 
@@ -99,10 +99,10 @@ Web Audio Editorは、各 AudioParam オブジェクトの value プロパティ
 
 AudioParam オブジェクトの value プロパティの表示は、ボックスがクリックされたタイミングで、現在の値に更新されます。
 
-## まとめ
+## 总结
 
-自分で作成したページだけでなく、既存のページをWeb Audio Editorで検証することももちろん可能です。
+使用Web Audio Editor不仅可以检查自己所做的页面，也可以观察其他页面的Web Audio API相关使用情况。
 
-Web Audio APIを用いたページの開発、そして分析にも、Web Audio Editorは大きな助けとなります。どんどん活用していきたいですね。
+在分析使用Web Audio API开发的页面时，善用Web Audio Editor着实可以帮不少忙。
 
-ではまた！　つっちーでした。
+那么回见！
