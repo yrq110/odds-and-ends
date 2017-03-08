@@ -8,6 +8,11 @@
 
 ***
 
+* [把浏览器变成钢琴！Web Audio API入门](https://github.com/yrq110/odds-and-ends/blob/master/%E6%8A%8A%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%98%E6%88%90%E9%92%A2%E7%90%B4%EF%BC%81Web%20Audio%20API%E5%85%A5%E9%97%A8.md)
+* [听听雨声放放松！Web Audio API入门（二）](https://github.com/yrq110/odds-and-ends/blob/master/%E5%90%AC%E5%90%AC%E9%9B%A8%E5%A3%B0%E6%94%BE%E6%94%BE%E6%9D%BE%EF%BC%81Web%20Audio%20API%E5%85%A5%E9%97%A8%EF%BC%88%E4%BA%8C%EF%BC%89.md)
+* [笙之和音，雅之氛围！Web Audio API入门（三）](http://yrq110.me/2017/02/18/20170218-sheng-chord-web-audio-api/)
+* [画随音动！Web Audio API入门（四）](http://yrq110.me/2017/02/27/20170227-volume-web-audio-api/)
+
 ![](https://cdn.liginc.co.jp/wp-content/uploads/2017/01/148481536457291800_80-1310x874.jpg)
 
 不知不觉已经到（五）了。
@@ -91,13 +96,13 @@ Web Audio Editor通过将所有AudioParam对象的值属性全部列出来解决
 
 ![](https://cdn.liginc.co.jp/wp-content/uploads/2016/11/147823226271241100_56.png)
 
-中間処理を表す AudioNode が追加されていることを確認できたら、そのボックスをクリックしてみてください。この場合では、GainNode の持つ gain.value が表示されたかと思います。
+点击表示中间处理的AudioNode即可查看它的值属性。如上图，可以看到GainNode的gain属性值。
 
-次に、いま value プロパティを確認した AudioNode に対応するレンジバーを左右させ、gain.value を調節してみてください。そして、再度同じボックスをクリックすると、gain.value の表示が調節後の値に更新されることを確認できるはずです。
+下面，记住当前的gain值，然后调整进度条来改变属性值，再次点击Gain方框，应会看到此时的gain值是调整后的更新值。
 
-このように、Web Audio Editor は AudioParam オブジェクトの value プロパティに関しても、その時々の状態を表示してくれます。ただし、AudioNode の接続状態と違って、リアルタイムに反映されないことに注意してください。
+这是由于Web Audio Editor将AudioParam对象的属性值更新为当前状态的值，不过与显示AudioNode连接状态不同的是，这个不是实时表现的。
 
-AudioParam オブジェクトの value プロパティの表示は、ボックスがクリックされたタイミングで、現在の値に更新されます。
+AudioParam对象的属性值是在点击方框后更新成了当前值。 
 
 ## 总结
 
