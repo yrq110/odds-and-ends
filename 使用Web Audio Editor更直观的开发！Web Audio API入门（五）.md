@@ -1,4 +1,4 @@
-# 使用Web Audio Editor进行更直观的开发！Web Audio API入门（五）
+# 使用Web Audio Editor更直观的开发！Web Audio API入门（五）
 
 ***
 
