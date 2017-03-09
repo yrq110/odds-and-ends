@@ -10,18 +10,19 @@
 ![](https://cdn.liginc.co.jp/wp-content/uploads/2016/12/14832784866283400_43-1310x874.jpg)
 
 
-どうもですよ、はやちですよ₍₍ (ง ˘ω˘ )ว ⁾⁾
+大家好₍₍ (ง ˘ω˘ )ว ⁾⁾
 
-今回は、以前SVGのアニメーションでご紹介させていただきましたこちらのアニメーション（↓）を使ったチェックボックスの作り方を、ご紹介いたします( ˇωˇ)☝
+这次介绍使用之前的SVG动画来进行选择框组件的制作( ˇωˇ)☝
 
+之前的教程：[SVGのプロパティを理解してアニメーションさせてみよう](https://liginc.co.jp/312143)
 
-## 実装方法
+## 实现方法
 
-まずは実装方法を紹介します( ˇωˇ)☝
+首先介绍实现的方法( ˇωˇ)☝
 
-### マークアップ
+### 标签
 
-SVG をインラインで label 内に入れます( ˇωˇ)☝
+把SVG标签放入label内( ˇωˇ)☝
 
 ```html
 <ul>
@@ -38,17 +39,16 @@ SVG をインラインで label 内に入れます( ˇωˇ)☝
 </ul>
 ```
 
-### スタイル
+### 样式
+#### 设置SVG与动画
 
-#### SVGとアニメーションの設定
+设置SVG的初始属性与动画。
 
-SVG の初期設定とアニメーションの設定をします。
+由于是描边动画，需要设置stroke-dasharray填充所有的线条间距，并将stroke-offset设为同样的值( ˇωˇ)☝
 
-描かれるアニメーションをするために、線の間隔が全部埋まるまで stroke-dasharray を設定して、stroke-offset を同じ数値分指定して、線の位置が見えなくなるまで設定をします( ˇωˇ)☝
+这次把动画的stroke-offset（线条位置）与 stroke-opacity（线条透明度）属性的变换时间改为0.3s( ˇωˇ)☝
 
-今回のアニメーションは、stroke-offset （線の位置）と stroke-opacity （線の透明度）を 0.3s 動かします( ˇωˇ)☝
-
-```css
+```scss
 ul li{
   list-style: none;
   color: #000;
@@ -66,26 +66,26 @@ svg{
   z-index: 1;
  
   path{
-    fill: none; //塗りつぶしを消す
-    stroke: #000; //線の色を設定
-    stroke-linejoin:round; //パスのつなぎ目を丸くする
-    stroke-linecap:round; //パスの端を丸くする
-    stroke-dasharray: 51; //線の間隔を設定
-    stroke-dashoffset:51; //線の長さを設定
-    stroke-opacity:0; //線の透明度を設定
-    stroke-width:4px; //線の太さを設定
+    fill: none; //无填充色
+    stroke: #000; //设置线条颜色
+    stroke-linejoin:round; //路径连接点为
+    stroke-linecap:round; //路径线帽为圆角
+    stroke-dasharray: 51; //设置线条间隔
+    stroke-dashoffset:51; //设置线条长度
+    stroke-opacity:0; //设置线条透明度
+    stroke-width:4px; //设置线条宽度
     transition: stroke-dashoffset 0.3s ease, stroke-opacity 0.3s;
-    //▲線の長さと線の透明度のアニメーション
+    //▲线条长度与透明度的动画
   }
 }
 ```
-#### チェックボックスの設定
+#### 设置选择框
 
 チェックボックスの疑似要素 checked で、アニメーション発火として使いたいので、label, svg, path 要素たちを、間接セレクタで設定します( ˇωˇ)☝
 
-これで checked になったとき、stroke-dashoffset （線の長さ）と stroke-opacity （線の透明度）のアニメーションが発火されます( ˇωˇ)☝
+在选中checked状态时，会执行stroke-dashoffset 与 stroke-opacity 动画( ˇωˇ)☝
 
-```css
+```scss
 input[type=&quot;checkbox&quot;]{
   -webkit-appearance: none;
   display: inline-block;
@@ -138,7 +138,7 @@ label:before{
 }
 ```
 
-実際にできたものがこちらになります( ˘ω˘)☞三☞ｼｭｯｼｭｯ
+实际效果如下所示( ˘ω˘)☞三☞ｼｭｯｼｭｯ
 
 <p data-height="265" data-theme-id="0" data-slug-hash="ZBYqyW" data-default-tab="css,result" data-user="Hayachi" data-embed-version="2" data-pen-title="SVG CheckBox" class="codepen">See the Pen <a href="http://codepen.io/Hayachi/pen/ZBYqyW/">SVG CheckBox</a> by Kayoko Hayashi (<a href="http://codepen.io/Hayachi">@Hayachi</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
