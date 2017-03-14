@@ -81,7 +81,7 @@ svg{
 ```
 #### 设置选择框
 
-チェックボックスの疑似要素 checked で、アニメーション発火として使いたいので、label, svg, path 要素たちを、間接セレクタで設定します( ˇωˇ)☝
+当选择框被选中时增加checked伪元素效果，执行动画，并且同时间接的选中了label、svg、path元素。
 
 在选中checked状态时，会执行stroke-dashoffset 与 stroke-opacity 动画( ˇωˇ)☝
 
@@ -142,3 +142,28 @@ label:before{
 
 <p data-height="265" data-theme-id="0" data-slug-hash="ZBYqyW" data-default-tab="css,result" data-user="Hayachi" data-embed-version="2" data-pen-title="SVG CheckBox" class="codepen">See the Pen <a href="http://codepen.io/Hayachi/pen/ZBYqyW/">SVG CheckBox</a> by Kayoko Hayashi (<a href="http://codepen.io/Hayachi">@Hayachi</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+## 试试其他样式
+理解实现的原理后，就可以通过改变SVG来实现不同的选中效果了( ˇωˇ)☝
+
+### 填充型选择框
+实现涂鸦时沙沙作响的填充效果( ˇωˇ)☝
+
+<p data-height="265" data-theme-id="0" data-slug-hash="LbVLYr" data-default-tab="html,result" data-user="Hayachi" data-embed-version="2" data-pen-title="SVG CheckBox" class="codepen">See the Pen <a href="http://codepen.io/Hayachi/pen/LbVLYr/">SVG CheckBox</a> by Kayoko Hayashi (<a href="http://codepen.io/Hayachi">@Hayachi</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+### 双线选择框
+设置SVG中两个path元素不同的delay值，使其按顺序进行绘制( ˇωˇ)☝
+
+<p data-height="265" data-theme-id="0" data-slug-hash="rWVzjP" data-default-tab="css,result" data-user="Hayachi" data-embed-version="2" data-pen-title="SVG CheckBox" class="codepen">See the Pen <a href="http://codepen.io/Hayachi/pen/rWVzjP/">SVG CheckBox</a> by Kayoko Hayashi (<a href="http://codepen.io/Hayachi">@Hayachi</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+## 总结
+
+我觉得只用CSS来实现选择框样式的方法是很简单的。
+
+悄无声息的进行了动画的演出，有点小激动哦₍₍ (ง ˘ω˘ )ว ⁾⁾
+
+之后也可以使用这种方法实现其他样式哦( ˇωˇ)☝
+
+那么回见~((((´ʘ‿ʘ｀)
