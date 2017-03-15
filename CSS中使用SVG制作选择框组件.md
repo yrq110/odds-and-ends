@@ -12,9 +12,9 @@
 
 大家好₍₍ (ง ˘ω˘ )ว ⁾⁾
 
-这次介绍使用之前的SVG动画来进行选择框组件的制作( ˇωˇ)☝
+这次使用之前所说的SVG动画来进行选择框组件的制作( ˇωˇ)☝
 
-之前的教程：[使用SVG属性进行动画制作](https://liginc.co.jp/312143)
+之前的教程：[学习SVG属性并制作动画](https://github.com/yrq110/odds-and-ends/blob/master/%E5%AD%A6%E4%B9%A0SVG%E5%B1%9E%E6%80%A7%E5%B9%B6%E5%88%B6%E4%BD%9C%E5%8A%A8%E7%94%BB.md)
 
 ## 实现
 
