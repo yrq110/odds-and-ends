@@ -16,83 +16,90 @@
 <p data-height="265" data-theme-id="0" data-slug-hash="xEgWpY" data-default-tab="css,result" data-user="Hayachi" data-embed-version="2" data-pen-title="Fill" class="codepen">See the Pen <a href="http://codepen.io/Hayachi/pen/xEgWpY/">Fill</a> by Kayoko Hayashi (<a href="http://codepen.io/Hayachi">@Hayachi</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-fillは、要素の内部の塗りを指定できるプロパティです。
+fill是设置元素内部填充的属性。
 
+```css
 fill:#fb9e28;
+```
 
 ### fill-opacity
 
 <p data-height="265" data-theme-id="0" data-slug-hash="GjAdKR" data-default-tab="html,result" data-user="Hayachi" data-embed-version="2" data-pen-title="Fill opacity" class="codepen">See the Pen <a href="http://codepen.io/Hayachi/pen/GjAdKR/">Fill opacity</a> by Kayoko Hayashi (<a href="http://codepen.io/Hayachi">@Hayachi</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-fill-opacityは、fillで塗られた箇所の透明度を変えることができるプロパティです。
+fill-opacity是设置fill所填充区域透明度的属性。
 
+```css
 fill-opacity:0.3;
-
+```
 ### stroke
 
 <p data-height="265" data-theme-id="0" data-slug-hash="vXgjxY" data-default-tab="css,result" data-user="Hayachi" data-embed-version="2" data-pen-title="Stroke" class="codepen">See the Pen <a href="http://codepen.io/Hayachi/pen/vXgjxY/">Stroke</a> by Kayoko Hayashi (<a href="http://codepen.io/Hayachi">@Hayachi</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-strokeは、線、テキスト、要素のアウトラインの色を指定できるプロパティです。
+stroke是设置线条、文本和元素的轮廓线颜色的属性。
 
+```css
 stroke:#000;
-
+```
 ### stroke-width
 
 <p data-height="265" data-theme-id="0" data-slug-hash="qaRYmw" data-default-tab="html,result" data-user="Hayachi" data-embed-version="2" data-pen-title="Stroke width" class="codepen">See the Pen <a href="http://codepen.io/Hayachi/pen/qaRYmw/">Stroke width</a> by Kayoko Hayashi (<a href="http://codepen.io/Hayachi">@Hayachi</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-stroke-widthは、外形線の幅を指定できるプロパティです。
-px,em,ec,pt,pc,cm,mm,inでの単位で指定することができます。0を指定すると、ストロークの線が消えてしまうので注意です( ˇωˇ)☝
+stroke-width是设置轮廓线宽度的属性。
+可以使用的单位有px,em,ec,pt,pc,cm,mm,in。需要注意设置为0的话轮廓线会消失。( ˇωˇ)☝
 
+```css
 stroke-width:5px;
-
+```
 ### stroke-opacity
 
 <p data-height="265" data-theme-id="0" data-slug-hash="VKPxrw" data-default-tab="html,result" data-user="Hayachi" data-embed-version="2" data-pen-title="Stroke opacity" class="codepen">See the Pen <a href="http://codepen.io/Hayachi/pen/VKPxrw/">Stroke opacity</a> by Kayoko Hayashi (<a href="http://codepen.io/Hayachi">@Hayachi</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-stroke-opacityは、strokeで塗られた箇所の透明度を変えることができるプロパティです。
+stroke-opacity是设置stroke所描轮廓线透明度的属性。
 
+```css
 stroke-opacity:0.3;
+```
 
 ### stroke-linecap
 
 <p data-height="265" data-theme-id="0" data-slug-hash="zKNjZX" data-default-tab="html,result" data-user="Hayachi" data-embed-version="2" data-pen-title="Stroke Linecap" class="codepen">See the Pen <a href="http://codepen.io/Hayachi/pen/zKNjZX/">Stroke Linecap</a> by Kayoko Hayashi (<a href="http://codepen.io/Hayachi">@Hayachi</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-stroke-linecapは、パスの端に形状を指定するプロパティです。
-
+stroke-linecap是设置路径端点形状的属性。
+```css
 stroke-linecap:butt;
 
 stroke-linecap:round;
 
 stroke-linecap:square;
-
+```
 * butt
-  線に等しく平らな形状
+  与线平齐的形状
 * round
-  線の端を丸くする
+  端点为圆形
 * square
-  線の端を四角くする
-
+  端点为正方形
+  
 ### stroke-linejoin
 
 <p data-height="265" data-theme-id="0" data-slug-hash="ALOaVJ" data-default-tab="html,result" data-user="Hayachi" data-embed-version="2" data-pen-title="Stroke linejoin" class="codepen">See the Pen <a href="http://codepen.io/Hayachi/pen/ALOaVJ/">Stroke linejoin</a> by Kayoko Hayashi (<a href="http://codepen.io/Hayachi">@Hayachi</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-stroke-linejoinは、パスのつなぎ目の形状を指定するプロパティです。
-
+stroke-linejoin是设置路径间连接形状的属性。
+```css
 stroke-linejoin: miter;
 
 stroke-linejoin: round;
 
 stroke-linejoin: bevel;
-
+```
 * miter
-  つなぎ目が鋭利な形状
+  连接处为尖锐状
 * round
-  つなぎ目が丸い形状
+  连接处为圆形
 * bevel
-  つなぎ目が平らな形状
+  连接处为削平状
