@@ -103,3 +103,104 @@ stroke-linejoin: bevel;
   连接处为圆形
 * bevel
   连接处为削平状
+
+### stroke-dasharray
+
+<p data-height="265" data-theme-id="0" data-slug-hash="qaRvVx" data-default-tab="html,result" data-user="Hayachi" data-embed-version="2" data-pen-title="Stroke dasharray" class="codepen">See the Pen <a href="http://codepen.io/Hayachi/pen/qaRvVx/">Stroke dasharray</a> by Kayoko Hayashi (<a href="http://codepen.io/Hayachi">@Hayachi</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+stroke-dasharrayは、線の間隔を指定するプロパティです。
+1pxなら、1pxの線のあとに1pxの隙間、というように等間隔で表示されます。
+
+```css
+stroke-dasharray: 1;
+ 
+stroke-dasharray: 3;
+ 
+stroke-dasharray: 10;
+```
+
+### stroke-dashoffset
+
+<p data-height="265" data-theme-id="0" data-slug-hash="WGRmqx" data-default-tab="html,result" data-user="Hayachi" data-embed-version="2" data-pen-title="Stroke dashoffset" class="codepen">See the Pen <a href="http://codepen.io/Hayachi/pen/WGRmqx/">Stroke dashoffset</a> by Kayoko Hayashi (<a href="http://codepen.io/Hayachi">@Hayachi</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+stroke-dashoffsetは、線の始まりの位置を指定するプロパティです。
+
+デモではstroke-dasharrayの指定を170pxにすることで要素分の線が指定されるので、stroke-dasharrayを同じ数値分指定してあげることによって、位置が移動されて線の長さが変わったように見えます。
+
+```css
+stroke-dasharray: 170;
+ 
+stroke-dasharray: 100;
+ 
+stroke-dasharray: 50;
+```
+
+stroke-dasharrayとstroke-dashoffsetの動きに関してはこちらでも説明されておりますのでご参考までに( ˘ω˘)☞三☞ｼｭｯｼｭｯ
+[Animated line drawing in SVG](https://jakearchibald.com/2013/animated-line-drawing-svg/)
+
+### アニメーションさせてみよう
+
+<p data-height="265" data-theme-id="0" data-slug-hash="BLkZZd" data-default-tab="html,result" data-user="Hayachi" data-embed-version="2" data-pen-title="SVG animation" class="codepen">See the Pen <a href="http://codepen.io/Hayachi/pen/BLkZZd/">SVG animation</a> by Kayoko Hayashi (<a href="http://codepen.io/Hayachi">@Hayachi</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+※アニメーションの確認の際はRERUNを押してください
+SVGのプロパティを使って、できたアニメーションさせてみました( ˘ω˘)☞三☞ｼｭｯｼｭｯ
+
+丸の部分と顔の部分とで分けてつくります。
+まず、stroke-dasharrayは線が全て埋まるまでの数値まで指定をします。
+
+
+```css
+  fill:none;
+  stroke:#000;
+  stroke-width:4px;
+  stroke-dasharray: 287;
+}
+ 
+path{
+  fill:#000;
+  fill-opacity:1;
+  stroke:#000;
+  stroke-width:1px;
+  stroke-dasharray: 66;
+}
+```
+
+アニメーションはanimationで指定します( ˇωˇ)☝
+丸の部分はstroke-dashoffsetのみで顔の部分はfill-opacityも一緒に指定してます( ˇωˇ)☝
+
+```css
+circle{
+  animation: circle ease 3s;
+}
+path{
+   animation: path ease 3s;
+}
+ 
+@keyframes circle {
+  to {
+    stroke-dashoffset: 0;
+  }
+  from {
+    stroke-dashoffset: 287;
+  }
+}
+ 
+@keyframes path {
+  to {
+    stroke-dashoffset: 0;
+    fill-opacity:1;
+  }
+  from {
+    stroke-dashoffset: 66;
+    fill-opacity:0;
+  }
+}
+```
+
+### まとめ
+
+プロパティを理解することによって、動きに関する理解も深まったかと思います( ˇωˇ )
+ではでは₍₍ (ง ˘ω˘ )ว ⁾⁾
