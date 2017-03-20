@@ -132,19 +132,19 @@ stroke-dasharray: 10;
 <p data-height="265" data-theme-id="0" data-slug-hash="WGRmqx" data-default-tab="html,result" data-user="Hayachi" data-embed-version="2" data-pen-title="Stroke dashoffset" class="codepen">See the Pen <a href="http://codepen.io/Hayachi/pen/WGRmqx/">Stroke dashoffset</a> by Kayoko Hayashi (<a href="http://codepen.io/Hayachi">@Hayachi</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-stroke-dashoffsetは、線の始まりの位置を指定するプロパティです。
+stroke-dashoffset是设置线条起始位置的属性。
 
-デモではstroke-dasharrayの指定を170pxにすることで要素分の線が指定されるので、stroke-dasharrayを同じ数値分指定してあげることによって、位置が移動されて線の長さが変わったように見えます。
+demo中所有线条的stroke-dasharray属性都是170px，可以看见移动位置后线条的长度发现了变化。
 
 ```css
-stroke-dasharray: 170;
+stroke-dashoffset: 170;
  
-stroke-dasharray: 100;
+stroke-dashoffset: 100;
  
-stroke-dasharray: 50;
+stroke-dashoffset: 50;
 ```
 
-stroke-dasharrayとstroke-dashoffsetの動きに関してはこちらでも説明されておりますのでご参考までに( ˘ω˘)☞三☞ｼｭｯｼｭｯ
+有关stroke-dasharray与stroke-dashoffset属性的动画可以参考下这篇文章中的说明( ˘ω˘)☞三☞ｼｭｯｼｭｯ
 [Animated line drawing in SVG](https://jakearchibald.com/2013/animated-line-drawing-svg/)
 
 ### 制作动画
@@ -152,11 +152,13 @@ stroke-dasharrayとstroke-dashoffsetの動きに関してはこちらでも説�
 <p data-height="265" data-theme-id="0" data-slug-hash="BLkZZd" data-default-tab="html,result" data-user="Hayachi" data-embed-version="2" data-pen-title="SVG animation" class="codepen">See the Pen <a href="http://codepen.io/Hayachi/pen/BLkZZd/">SVG animation</a> by Kayoko Hayashi (<a href="http://codepen.io/Hayachi">@Hayachi</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-※アニメーションの確認の際はRERUNを押してください
-SVGのプロパティを使って、できたアニメーションさせてみました( ˘ω˘)☞三☞ｼｭｯｼｭｯ
+※请点击RERUN播放动画
 
-丸の部分と顔の部分とで分けてつくります。
-まず、stroke-dasharrayは線が全て埋まるまでの数値まで指定をします。
+使用SVG属性来制作一些力所能及的动画( ˘ω˘)☞三☞ｼｭｯｼｭｯ
+
+将圆形部分与面部元素部分分开制作。
+
+首先设置stroke-dasharray使线间没有间隔。
 
 
 ```css
@@ -175,8 +177,9 @@ path{
 }
 ```
 
-アニメーションはanimationで指定します( ˇωˇ)☝
-丸の部分はstroke-dashoffsetのみで顔の部分はfill-opacityも一緒に指定してます( ˇωˇ)☝
+使用animation属性设置动画( ˇωˇ)☝
+
+圆形部分只设置stroke-dashoffset属性，面部元素部分一起设置stroke-dashoffset和fill-opacity属性( ˇωˇ)☝
 
 ```css
 circle{
