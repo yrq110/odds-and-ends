@@ -1,9 +1,9 @@
 #5分钟了解Material Design
 ***
 
->* 原文链接 : [今さら聞けない?! 5分でわかる！マテリアルデザイン入門](https://lab.sonicmoov.com/design/material-design/)
-* 原文作者 : ユウコ
-* 译者 : [yrq110](https://github.com/yrq110)
+> * 原文链接 : [今さら聞けない?! 5分でわかる！マテリアルデザイン入門](https://lab.sonicmoov.com/design/material-design/)
+> * 原文作者 : ユウコ
+> * 译者 : [yrq110](https://github.com/yrq110)
 
 ***
 

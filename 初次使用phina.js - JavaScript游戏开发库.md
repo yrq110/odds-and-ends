@@ -1,9 +1,9 @@
 # 初次使用phina.js - JavaScript游戏开发库
 ***
 
->* 原文链接 : [はじめてのphina.js – JavaScriptゲームライブラリを使ってみた！](https://liginc.co.jp/306739)
-* 原文作者 : [シスコ](https://liginc.co.jp/member/member_detail?user=cisco)
-* 译者 : [yrq110](https://github.com/yrq110)
+> * 原文链接 : [はじめてのphina.js – JavaScriptゲームライブラリを使ってみた！](https://liginc.co.jp/306739)
+> * 原文作者 : [シスコ](https://liginc.co.jp/member/member_detail?user=cisco)
+> * 译者 : [yrq110](https://github.com/yrq110)
 
 ***
 

@@ -2,9 +2,9 @@
 
 ***
 
->* 原文链接 : [webブラウザがピアノになる！「Web Audio API」入門](http://liginc.co.jp/284679)
-* 原文作者 : [つっちー](http://liginc.co.jp/member/member_detail?user=tsuchiya)
-* 译者 : [yrq110](https://github.com/yrq110)
+> * 原文链接 : [webブラウザがピアノになる！「Web Audio API」入門](http://liginc.co.jp/284679)
+> * 原文作者 : [つっちー](http://liginc.co.jp/member/member_detail?user=tsuchiya)
+> * 译者 : [yrq110](https://github.com/yrq110)
 
 ***
 

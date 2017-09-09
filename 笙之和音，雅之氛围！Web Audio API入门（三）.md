@@ -2,9 +2,9 @@
 
 ***
 
->* 原文链接 : [笙（しょう）の和音でみやびな気分！続々「Web Audio API」入門](https://liginc.co.jp/307261)
-* 原文作者 : [つっちー](http://liginc.co.jp/member/member_detail?user=tsuchiya)
-* 译者 : [yrq110](https://github.com/yrq110)
+> * 原文链接 : [笙（しょう）の和音でみやびな気分！続々「Web Audio API」入門](https://liginc.co.jp/307261)
+> * 原文作者 : [つっちー](http://liginc.co.jp/member/member_detail?user=tsuchiya)
+> * 译者 : [yrq110](https://github.com/yrq110)
 
 ***
 

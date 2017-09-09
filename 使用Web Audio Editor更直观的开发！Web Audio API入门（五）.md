@@ -2,9 +2,9 @@
 
 ***
 
->* 原文链接 : [「Web Audio Editor」でより直感的なWeb Audio API開発を！ – 続々々々「Web Audio API」入門 ](https://liginc.co.jp/322853)
-* 原文作者 : [つっちー](http://liginc.co.jp/member/member_detail?user=tsuchiya)
-* 译者 : [yrq110](https://github.com/yrq110)
+> * 原文链接 : [「Web Audio Editor」でより直感的なWeb Audio API開発を！ – 続々々々「Web Audio API」入門 ](https://liginc.co.jp/322853)
+> * 原文作者 : [つっちー](http://liginc.co.jp/member/member_detail?user=tsuchiya)
+> * 译者 : [yrq110](https://github.com/yrq110)
 
 ***
 

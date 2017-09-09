@@ -1,9 +1,9 @@
 # 学习SVG属性并制作动画
 ***
 
->* 原文链接 : [SVGのプロパティを理解してアニメーションさせてみよう](https://liginc.co.jp/312143)
-* 原文作者 : [はやち](https://liginc.co.jp/member/member_detail?user=hayachi)
-* 译者 : [yrq110](https://github.com/yrq110)
+> * 原文链接 : [SVGのプロパティを理解してアニメーションさせてみよう](https://liginc.co.jp/312143)
+> * 原文作者 : [はやち](https://liginc.co.jp/member/member_detail?user=hayachi)
+> * 译者 : [yrq110](https://github.com/yrq110)
 
 ***
 

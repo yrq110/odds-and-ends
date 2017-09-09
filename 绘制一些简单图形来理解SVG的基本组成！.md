@@ -1,9 +1,9 @@
 # 绘制一些简单图形来理解SVG的基本组成！
 ***
 
->* 原文链接 : [簡単な図形を描きながら、SVGの基本的な仕組みを理解してみよう！](https://liginc.co.jp/300610)
-* 原文作者 : [はっちゃん](https://liginc.co.jp/member/member_detail?user=kazuya)
-* 译者 : [yrq110](https://github.com/yrq110)
+> * 原文链接 : [簡単な図形を描きながら、SVGの基本的な仕組みを理解してみよう！](https://liginc.co.jp/300610)
+> * 原文作者 : [はっちゃん](https://liginc.co.jp/member/member_detail?user=kazuya)
+> * 译者 : [yrq110](https://github.com/yrq110)
 
 ***
 

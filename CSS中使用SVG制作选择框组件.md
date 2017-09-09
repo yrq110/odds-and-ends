@@ -1,9 +1,9 @@
 # CSS中使用SVG制作选择框组件
 ***
 
->* 原文链接 : [JavaScript不使用！ SVGを使ってCSSでチェックボックスを作る方法](https://liginc.co.jp/315466)
-* 原文作者 : [はやち](https://liginc.co.jp/member/member_detail?user=hayachi)
-* 译者 : [yrq110](https://github.com/yrq110)
+> * 原文链接 : [JavaScript不使用！ SVGを使ってCSSでチェックボックスを作る方法](https://liginc.co.jp/315466)
+> * 原文作者 : [はやち](https://liginc.co.jp/member/member_detail?user=hayachi)
+> * 译者 : [yrq110](https://github.com/yrq110)
 
 ***
 
