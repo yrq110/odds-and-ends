@@ -2,12 +2,12 @@
 
 ***
 
-> * 原文链接 : [Best Way to Programmatically Zoom a Web Applicatio](https://css-tricks.com/best-way-programmatically-zoom-web-application/)
+> * 原文链接 : [Best Way to Programmatically Zoom a Web Application](https://css-tricks.com/best-way-programmatically-zoom-web-application/)
 > * 原文作者 : [MICHAEL ROMANOV ](https://css-tricks.com/author/romanovma-pookl/)
 > * 译者 : [yrq110](https://github.com/yrq110)
 
 ***
-
+s
 网站的无障碍访问一直是很重要的，并且现在多数国家的政府都有了明确的标准与规范，因此使网站支持这些标准并增强可访问性变得很关键。
 
 [W3C推荐标准](https://www.w3.org/TR/WCAG20/)中提供了一致性的三种等级：A, AA和AAA。为了达到AA这一级，除了满足其他要求外，我们还需要提供一种增加网站字体大小的方法：
