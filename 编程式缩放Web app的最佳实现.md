@@ -7,13 +7,12 @@
 > * 译者 : [yrq110](https://github.com/yrq110)
 
 ***
-s
+
 网站的无障碍访问一直是很重要的，并且现在多数国家的政府都有了明确的标准与规范，因此使网站支持这些标准并增强可访问性变得很关键。
 
 [W3C推荐标准](https://www.w3.org/TR/WCAG20/)中提供了一致性的三种等级：A, AA和AAA。为了达到AA这一级，除了满足其他要求外，我们还需要提供一种增加网站字体大小的方法：
 
 > 1.4.4 Resize text: Except for captions and images of text, text can be resized without assistive technology up to 200 percent without loss of content or functionality. (Level AA)
-
 
 让我们探索一些解决方案并找出一种最好的。
 
